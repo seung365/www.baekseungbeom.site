@@ -1,0 +1,50 @@
+import styled from "@emotion/styled"
+import { useEffect } from "react"
+import ScrollToTop from "../../components/common/ScrollToTop"
+import ThemeToggle from "../../components/common/ThemeToggle"
+import Contact from "./components/Contact"
+import Experience from "./components/Experience"
+import Intro from "./components/Intro"
+import Profile from "./components/Profile"
+import Projects from "./components/Projects"
+import Skills from "./components/Skills"
+
+type HomeProps = {
+  isDark: boolean
+  setIsDark: (isDark: boolean) => void
+}
+
+const Home = ({ isDark, setIsDark }: HomeProps) => {
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    }, 100)
+  }, [])
+
+  return (
+    <>
+      <ThemeToggle isDark={isDark} setIsDark={setIsDark} />
+      <ScrollToTop />
+      <Intro />
+      <MainLayout>
+        <Profile />
+        <Experience />
+        <Skills />
+        <Projects />
+        <Contact />
+      </MainLayout>
+    </>
+  )
+}
+
+const MainLayout = styled.div`
+  background: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 2rem;
+`
+export default Home
