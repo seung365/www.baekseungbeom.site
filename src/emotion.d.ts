@@ -7,5 +7,9 @@ declare module "@emotion/react" {
     primary: string
     secondary: string
     surface: string
+    breakpoints: {
+      mobile: string
+      tablet: string
+    }
   }
 }
