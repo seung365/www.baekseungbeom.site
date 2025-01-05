@@ -6,7 +6,7 @@ type ThemeToggleProps = {
 }
 
 const ThemeToggle = ({ isDark, setIsDark }: ThemeToggleProps) => (
-  <ToggleButton onClick={() => setIsDark(!isDark)}>{isDark ? "🌙" : "☀️"}</ToggleButton>
+  <ToggleButton onClick={() => setIsDark(!isDark)}>{isDark ? "Dark mode" : "Light mode"}</ToggleButton>
 )
 
 export default ThemeToggle
@@ -16,20 +16,27 @@ const ToggleButton = styled.button`
   top: 1rem;
   right: 1rem;
   z-index: 10;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: ${({ theme }) => theme.surface};
+  width: 100px;
+  height: 40px;
+  background: transparent;
   color: ${({ theme }) => theme.text};
-  font-size: 1.5rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
+  border: none;
 
   &:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 10px ${({ theme }) => theme.primary}40;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 80px;
+    height: 32px;
+    font-size: 0.8rem;
   }
 `
