@@ -11,11 +11,11 @@ const Intro = () => {
   const { handleScrollDown } = useScroll(sectionRef, contentRef, contactRef)
 
   return (
-    <S.Section ref={sectionRef} $isVisible={isVisible}>
+    <S.Section ref={sectionRef}>
       <S.ContentWrapper ref={contentRef}>
         <S.NameContainer>
-          <S.FirstName $isVisible={isVisible}>Baek</S.FirstName>
-          <S.LastName $isVisible={isVisible}>SeungBeom</S.LastName>
+          <S.FirstName>Baek</S.FirstName>
+          <S.LastName>SeungBeom</S.LastName>
         </S.NameContainer>
       </S.ContentWrapper>
       <S.ContactWrapper ref={contactRef}>
