@@ -1,12 +1,70 @@
+import { keyframes } from "@emotion/react"
 import styled from "@emotion/styled"
 
+const fadeIn = keyframes`
+ 0% {
+   opacity: 0;
+ }
+ 100% {
+   opacity: 1;
+ }
+`
+
+const fadeInUp = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`
+
+const pulseAnimation = keyframes`
+0% {
+  transform: translateY(0);
+  opacity: 1;
+}
+50% {
+  transform: translateY(10px);
+  opacity: 0.5;
+}
+100% {
+  transform: translateY(0);
+  opacity: 1;
+}
+`
 export const S = {
-  Section: styled.section<{ $isVisible: boolean }>`
-    height: 100vh;
+  ScrollDownButton: styled.button<{ $isVisible: boolean }>`
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
+    transition: opacity 0.3s ease;
+    z-index: 2;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  `,
+
+  ScrollArrow: styled.span`
+    color: ${({ theme }) => theme.text};
+    font-size: 2rem;
+    animation: ${pulseAnimation} 2s ease-in-out infinite;
+  `,
+
+  Section: styled.section`
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
     padding: 2rem;
     position: relative;
     overflow: hidden;
@@ -15,10 +73,7 @@ export const S = {
     &::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0; // top, right, bottom, left를 한번에 설정
       background: linear-gradient(rgba(78, 205, 196, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(78, 205, 196, 0.03) 1px, transparent 1px);
       background-size: 50px 50px;
@@ -41,82 +96,70 @@ export const S = {
       );
       transform-origin: center;
       animation: rotateGradient 20s linear infinite;
-      z-index: 0;
     }
+  `,
 
-    @keyframes gridMove {
-      0% {
-        transform: translateY(0);
-      }
-      100% {
-        transform: translateY(50px);
-      }
+  Link: styled.a`
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
     }
+  `,
 
-    @keyframes rotateGradient {
-      0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-      }
-      100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-      }
-    }
+  ContactWrapper: styled.div`
+    color: ${({ theme }) => theme.text};
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    align-self: flex-end;
+    text-align: right;
+    gap: 0.8rem;
+    transform: translateY(calc(var(--scroll-position, 0) * -0.5px));
+    opacity: calc(1 - (var(--scroll-position, 0) / 500));
+    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+    z-index: 1;
+  `,
+
+  ContactItem: styled.div<{ delay: number }>`
+    opacity: 0;
+    animation: ${fadeInUp} 0.5s ease forwards;
+    animation-delay: ${({ delay }) => delay}s;
+  `,
+
+  ContentWrapper: styled.div`
+    margin-top: 30vh;
+    transform: translateY(calc(var(--scroll-position, 0) * -0.5px));
+    opacity: calc(1 - (var(--scroll-position, 0) / 500));
+    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
   `,
 
   NameContainer: styled.div`
     display: flex;
-    gap: 1rem;
-    margin-bottom: 3rem;
+    flex-direction: column;
     font-size: 8vw;
     font-weight: 900;
     text-transform: uppercase;
     z-index: 1;
+    gap: 0.5rem;
   `,
 
-  FirstName: styled.div<{ $isVisible: boolean }>`
-    font-family: "Montserrat", sans-serif;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-    -webkit-background-clip: text;
-    color: transparent;
-    opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
-    transform: ${({ $isVisible }) => ($isVisible ? "translateX(0) rotate(0deg)" : "translateX(-100%) rotate(-20deg)")};
-    transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  FirstName: styled.div`
+    color: ${({ theme }) => theme.text};
+    font-weight: 600;
+    opacity: 0;
+    margin-bottom: 1rem;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    animation: ${fadeIn} 0.8s ease forwards;
   `,
 
-  LastName: styled.div<{ $isVisible: boolean }>`
-    font-family: "Montserrat", sans-serif;
-    background: linear-gradient(45deg, #4ecdc4, #ff6b6b);
-    -webkit-background-clip: text;
-    color: transparent;
-    opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
-    transform: ${({ $isVisible }) => ($isVisible ? "translateX(0) rotate(0deg)" : "translateX(100%) rotate(20deg)")};
-    transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  `,
-
-  Role: styled.div<{ $isVisible: boolean }>`
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 4vw;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    background: linear-gradient(to right, #4ecdc4, #ff6b6b);
-    -webkit-background-clip: text;
-    color: transparent;
-    opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
-    transform: ${({ $isVisible }) => ($isVisible ? "translateY(0) scale(1)" : "translateY(50px) scale(0.8)")};
-    transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s;
-    position: relative;
-    z-index: 1;
-
-    &:before {
-      content: "";
-      position: absolute;
-      width: ${({ $isVisible }) => ($isVisible ? "100%" : "0")};
-      height: 2px;
-      bottom: -10px;
-      left: 0;
-      background: linear-gradient(to right, #4ecdc4, #ff6b6b);
-      transition: width 1.5s ease-out 1.2s;
-    }
+  LastName: styled.div`
+    color: ${({ theme }) => theme.text};
+    font-weight: 600;
+    opacity: 0;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    animation: ${fadeIn} 0.8s ease 0.2s forwards;
   `,
 }

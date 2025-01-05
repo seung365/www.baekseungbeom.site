@@ -1,16 +1,40 @@
+import { useRef } from "react"
 import useIntersectionObserver from "../../../../hooks/useIntersectionObserver"
+import { useScroll } from "../../../../hooks/useScroll"
 import { S } from "./styles"
 
 const Intro = () => {
   const { sectionRef, isVisible } = useIntersectionObserver()
+  const contentRef = useRef<HTMLDivElement>(null)
+  const contactRef = useRef<HTMLDivElement>(null)
+
+  const { handleScrollDown } = useScroll(sectionRef, contentRef, contactRef)
 
   return (
     <S.Section ref={sectionRef} $isVisible={isVisible}>
-      <S.NameContainer>
-        <S.FirstName $isVisible={isVisible}>Baek</S.FirstName>
-        <S.LastName $isVisible={isVisible}>SeungBeom</S.LastName>
-      </S.NameContainer>
-      <S.Role $isVisible={isVisible}>FrontEnd Developer</S.Role>
+      <S.ContentWrapper ref={contentRef}>
+        <S.NameContainer>
+          <S.FirstName $isVisible={isVisible}>Baek</S.FirstName>
+          <S.LastName $isVisible={isVisible}>SeungBeom</S.LastName>
+        </S.NameContainer>
+      </S.ContentWrapper>
+      <S.ContactWrapper ref={contactRef}>
+        <S.ContactItem delay={0.6}>
+          <S.Link href="https://velog.io" target="_blank" rel="noopener noreferrer">
+            Velog
+          </S.Link>
+        </S.ContactItem>
+        <S.ContactItem delay={0.8}>
+          <S.Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+            Github
+          </S.Link>
+        </S.ContactItem>
+        <S.ContactItem delay={1.0}>+82 10-5583-6009</S.ContactItem>
+        <S.ContactItem delay={1.2}>bdh3659@naver.com</S.ContactItem>
+      </S.ContactWrapper>
+      <S.ScrollDownButton onClick={handleScrollDown} $isVisible={isVisible}>
+        <S.ScrollArrow>↓</S.ScrollArrow>
+      </S.ScrollDownButton>
     </S.Section>
   )
 }
