@@ -1,4 +1,4 @@
-export const theme = {
+export const defaultTheme = {
   colors: {
     primary: "#4ecdc4",
     secondary: "#ff6b6b",
@@ -15,6 +15,7 @@ export const theme = {
 }
 
 export const lightTheme = {
+  ...defaultTheme,
   background: "linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)",
   text: "#1a1a1a",
   primary: "#4ecdc4",
@@ -23,6 +24,7 @@ export const lightTheme = {
 }
 
 export const darkTheme = {
+  ...defaultTheme,
   background: "linear-gradient(135deg, #000000 0%, #1a1a1a 100%)",
   text: "#ffffff",
   primary: "#4ecdc4",
