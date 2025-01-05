@@ -39,7 +39,6 @@ export const GlobalStyles = css`
   }
 
   p {
-    margin-bottom: 1em;
     line-height: 1.7;
   }
 
@@ -56,6 +55,14 @@ export const GlobalStyles = css`
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  button {
+    border: none;
+    outline: none;
+    background: none;
+    font-family: inherit;
+    cursor: pointer;
   }
 
   ::-webkit-scrollbar-track {
