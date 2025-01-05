@@ -117,7 +117,7 @@ export const S = {
     gap: 0.8rem;
     transform: translateY(calc(var(--scroll-position, 0) * -0.5px));
     opacity: calc(1 - (var(--scroll-position, 0) / 500));
-    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
     z-index: 1;
   `,
 
@@ -131,7 +131,7 @@ export const S = {
     margin-top: 30vh;
     transform: translateY(calc(var(--scroll-position, 0) * -0.5px));
     opacity: calc(1 - (var(--scroll-position, 0) / 500));
-    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
   `,
 
   NameContainer: styled.div`
