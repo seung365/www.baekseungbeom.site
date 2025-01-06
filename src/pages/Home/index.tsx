@@ -2,6 +2,7 @@ import styled from "@emotion/styled"
 import { useEffect } from "react"
 import ScrollToTop from "../../components/common/ScrollToTop"
 import ThemeToggle from "../../components/common/ThemeToggle"
+import { useTheme } from "../../hooks/useTheme"
 import Experience from "./components/Experience"
 import Intro from "./components/Intro"
 import Profile from "./components/Profile"
@@ -14,6 +15,8 @@ type HomeProps = {
 }
 
 const Home = ({ isDark, setIsDark }: HomeProps) => {
+  useTheme(isDark, setIsDark)
+
   useEffect(() => {
     setTimeout(() => {
       window.scrollTo({
@@ -42,7 +45,8 @@ const MainLayout = styled.div`
   background: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.text};
   min-height: 100vh;
-  overflow-x: hidden;
   padding: 2rem;
+  position: relative;
+  overflow: visible;
 `
 export default Home
