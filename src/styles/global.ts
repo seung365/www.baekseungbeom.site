@@ -1,4 +1,3 @@
-// styles/GlobalStyle.ts
 import { css } from "@emotion/react"
 
 export const GlobalStyles = css`
@@ -22,7 +21,6 @@ export const GlobalStyles = css`
     font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
     line-height: 1.6;
     letter-spacing: -0.03em;
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
