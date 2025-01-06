@@ -73,7 +73,7 @@ export const S = {
     &::before {
       content: "";
       position: absolute;
-      inset: 0; // top, right, bottom, left를 한번에 설정
+      inset: 0;
       background: linear-gradient(rgba(78, 205, 196, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(78, 205, 196, 0.03) 1px, transparent 1px);
       background-size: 50px 50px;
