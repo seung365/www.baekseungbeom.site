@@ -1,4 +1,3 @@
-// main.tsx
 import { Global } from "@emotion/react"
 import { Analytics } from "@vercel/analytics/react"
 import { StrictMode } from "react"

@@ -1,6 +1,5 @@
 import { RefObject, useEffect } from "react"
 
-// hooks/useScroll.ts
 export const useScroll = (
   sectionRef: RefObject<HTMLElement>,
   contentRef: RefObject<HTMLDivElement>,
