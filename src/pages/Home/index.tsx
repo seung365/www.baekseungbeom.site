@@ -33,8 +33,8 @@ const Home = ({ isDark, setIsDark }: HomeProps) => {
       <Intro />
       <MainLayout>
         <Profile />
-        <Experience />
         <Skills />
+        <Experience />
         <Projects />
       </MainLayout>
     </>
