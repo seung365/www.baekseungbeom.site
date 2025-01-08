@@ -20,12 +20,12 @@ const Intro = () => {
       </S.ContentWrapper>
       <S.ContactWrapper ref={contactRef}>
         <S.ContactItem delay={0.6}>
-          <S.Link href="https://velog.io" target="_blank" rel="noopener noreferrer">
+          <S.Link href="https://velog.io/@seung365" target="_blank" rel="noopener noreferrer">
             Velog
           </S.Link>
         </S.ContactItem>
         <S.ContactItem delay={0.8}>
-          <S.Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <S.Link href="https://github.com/seung365" target="_blank" rel="noopener noreferrer">
             Github
           </S.Link>
         </S.ContactItem>
