@@ -4,6 +4,7 @@ import ScrollToTop from "../../components/common/ScrollToTop"
 import ThemeToggle from "../../components/common/ThemeToggle"
 import { useTheme } from "../../hooks/useTheme"
 import Experience from "./components/Experience"
+import Footer from "./components/Footer"
 import Intro from "./components/Intro"
 import Profile from "./components/Profile"
 import Projects from "./components/Projects"
@@ -37,6 +38,7 @@ const Home = ({ isDark, setIsDark }: HomeProps) => {
         <Experience />
         <Projects />
       </MainLayout>
+      <Footer />
     </>
   )
 }
