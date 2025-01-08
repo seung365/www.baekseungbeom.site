@@ -102,9 +102,7 @@ export const S = {
   Link: styled.a`
     color: inherit;
     text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
+    text-decoration: underline;
   `,
 
   ContactWrapper: styled.div`
