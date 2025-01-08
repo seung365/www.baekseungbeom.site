@@ -33,7 +33,7 @@ export const S = {
     margin: 1rem 0;
   `,
 
-  SkillTag: styled.span`
+  InfoTag: styled.span`
     background: rgba(78, 205, 196, 0.2);
     color: #4ecdc4;
     padding: 0.3rem 0.8rem;
