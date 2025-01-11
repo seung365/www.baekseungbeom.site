@@ -25,7 +25,7 @@ export const S = {
 
       li {
         color: ${({ theme }) => theme.text};
-        opacity: 0.7;
+        opacity: 0.9;
         font-size: 1.1rem;
         margin-bottom: 0.75rem;
         padding-left: 1.5rem;
@@ -115,7 +115,7 @@ export const S = {
     a {
       color: ${({ theme }) => theme.text};
       opacity: 0.7;
-      text-decoration: none;
+      text-decoration: underline;
       padding: 0.5rem 1rem;
       border: 1px solid ${({ theme }) => `${theme.surface}20`};
       border-radius: 8px;
@@ -174,7 +174,7 @@ export const S = {
 
     li {
       color: ${({ theme }) => theme.text};
-      opacity: 0.7;
+      opacity: 0.9;
       font-size: 1.1rem;
       margin-bottom: 0.5rem;
       line-height: 1.6;
@@ -193,7 +193,7 @@ export const S = {
 
     p {
       color: ${({ theme }) => theme.text};
-      opacity: 0.7;
+      opacity: 0.9;
       font-size: 1rem;
       line-height: 1.6;
 
