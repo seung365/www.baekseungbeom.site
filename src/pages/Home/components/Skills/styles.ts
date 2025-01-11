@@ -86,6 +86,7 @@ export const S = {
   CardBack: styled.div<{ $levelColor: string }>`
     position: absolute;
     font-size: 0.75rem;
+    font-weight: 600;
     width: 100%;
     height: 100%;
     display: flex;
