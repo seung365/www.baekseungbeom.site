@@ -45,10 +45,10 @@ const Projects = () => {
         <S.ContentSection>
           <S.SectionTitle>사용 기술</S.SectionTitle>
           <S.TechList>
-            <li>React, TypeScript, Emotion, TanStack Query</li>
-            <li>React Hook Form, React-Use-Gesture</li>
-            <li>ESLint, Prettier</li>
-            <li>webOS</li>
+            <li>
+              React · TypeScript · Emotion · TanStack Query · React Hook Form · React-Use-Gesture · ESLint · Prettier ·
+              webOS
+            </li>
           </S.TechList>
         </S.ContentSection>
 
@@ -118,10 +118,10 @@ const Projects = () => {
         <S.ContentSection>
           <S.SectionTitle>사용 기술</S.SectionTitle>
           <S.TechList>
-            <li>React, TypeScript, Emotion, TanStack Query</li>
-            <li>React Hook Form, Chakra UI, Zustand</li>
-            <li>Pnpm, Vite</li>
-            <li>Amazon S3, GitHub Actions</li>
+            <li>
+              React · TypeScript · Emotion · TanStack Query · React Hook Form · Chakra UI · Zustand · Pnpm · Vite ·
+              ESLint · Prettier · Amazon S3 · GitHub Actions
+            </li>
           </S.TechList>
         </S.ContentSection>
 
@@ -186,10 +186,7 @@ const Projects = () => {
         <S.ContentSection>
           <S.SectionTitle>사용 기술</S.SectionTitle>
           <S.TechList>
-            <li>React, TypeScript, Emotion, TanStack Query</li>
-            <li>React Hook Form</li>
-            <li>ESLint, Prettier</li>
-            <li>MacOS</li>
+            <li>React · TypeScript · Emotion · TanStack Query · React Hook Form · ESLint · Prettier · MacOS</li>
           </S.TechList>
         </S.ContentSection>
 
@@ -209,7 +206,7 @@ const Projects = () => {
             <h5>🚨 마이페이지 메일 내용 렌더링 문제</h5>
             <p>
               API 호출 시 header에 들어가는 Job에 따라 response가 다르게 되는데 그렇기에 하나의 배열을 사용하여 데이터를
-              받게 구현하였습니다. 배열의 내용이 달라지게 되는데 이때 map을 통해 배열을 UI에 렌더링 하기에 리렌더링시에
+              받게 구현하였습니다. 배열의 내용이 달라지게 되는데 이때 map을 통해 배열을 UI에 렌더링 하기에 리렌더링시
               어떤 부분이 바뀐지 명확하게 key를 설정하지 못한 문제임을 파악했습니다. 그래서 Job의 요소를 추가해{" "}
               <code>${"`${isJob}-${email.createDate}-${index}`"}</code> 다음과 같이 키를 더 복잡하게 해주어 리렌더링시
               발생하는 문제를 해결할 수 있었습니다.
