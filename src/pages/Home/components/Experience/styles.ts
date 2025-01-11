@@ -50,7 +50,6 @@ export const S = {
     position: relative;
 
     &::after {
-      content: "";
       display: block;
       height: 25vh;
       position: absolute;
@@ -79,7 +78,6 @@ export const S = {
     text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 
     &::after {
-      content: "";
       position: absolute;
       bottom: -0.5rem;
       left: 0;

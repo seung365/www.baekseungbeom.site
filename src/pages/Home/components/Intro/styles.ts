@@ -41,8 +41,6 @@ export const S = {
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    background: none;
-    border: none;
     cursor: pointer;
     opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
     transition: opacity 0.3s ease;
@@ -71,9 +69,7 @@ export const S = {
     background: ${({ theme }) => theme.background};
 
     &::before {
-      content: "";
       position: absolute;
-      inset: 0;
       background: linear-gradient(rgba(78, 205, 196, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(78, 205, 196, 0.03) 1px, transparent 1px);
       background-size: 50px 50px;
@@ -81,7 +77,6 @@ export const S = {
     }
 
     &::after {
-      content: "";
       position: absolute;
       top: 50%;
       left: 50%;
@@ -100,8 +95,6 @@ export const S = {
   `,
 
   Link: styled.a`
-    color: inherit;
-    text-decoration: none;
     text-decoration: underline;
   `,
 
