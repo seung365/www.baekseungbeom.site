@@ -17,8 +17,8 @@ export const defaultTheme = {
 export const lightTheme = {
   ...defaultTheme,
   background: "linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)",
-  text: "#1a1a1a",
-  primary: "#4ecdc4",
+  text: "#000000",
+  primary: "#4ebdb4",
   secondary: "#ff6b6b",
   surface: "#ffffff",
 }
