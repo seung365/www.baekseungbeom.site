@@ -1,8 +1,8 @@
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
 
 export const S = {
   ProfileSection: styled.section<{ $isVisible: boolean }>`
-    margin: 4rem 0;
+    margin: 4rem auto;
     opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
     transform: translateY(${({ $isVisible }) => ($isVisible ? "0" : "20px")});
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -21,9 +21,7 @@ export const S = {
 
   GradientTitle: styled.h2`
     font-size: 2.5rem;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-    -webkit-background-clip: text;
-    color: transparent;
+
     margin-bottom: 2rem;
   `,
 
@@ -43,4 +41,41 @@ export const S = {
     margin-bottom: 0.5rem;
     display: inline-block;
   `,
-}
+  QuoteWrapper: styled.span`
+    display: inline-block;
+    position: relative;
+  `,
+
+  Quote: styled.span<{ $isVisible: boolean }>`
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: ${(props) =>
+      props.$isVisible ? "fadeInQuote 1s ease-out forwards, float 2s ease-in-out infinite" : "none"};
+    animation-delay: ${(props) => (props.children === '"' ? "0.8s" : "1s")},
+      ${(props) => (props.children === '"' ? "1.8s" : "2s")};
+
+    @keyframes fadeInQuote {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+  `,
+};
