@@ -1,4 +1,4 @@
-import { DiGit, DiJava, DiJavascript1, DiLinux, DiMysql, DiPython, DiReact, DiWindows } from "react-icons/di"
+import { DiGit, DiJava, DiJavascript1, DiLinux, DiMysql, DiPython, DiReact, DiWindows } from "react-icons/di";
 import {
   SiAmazon,
   SiC,
@@ -15,7 +15,7 @@ import {
   SiSlack,
   SiTypescript,
   SiVercel,
-} from "react-icons/si"
+} from "react-icons/si";
 
 export const SKILL_CATEGORIES = {
   programming: {
@@ -54,10 +54,10 @@ export const SKILL_CATEGORIES = {
   environment: {
     title: "Environment",
     skills: [
-      { name: "AWS", level: "중", icon: SiAmazon, color: "#FF9900" },
-      { name: "Linux", level: "중", icon: DiLinux, color: "#FCC624" },
       { name: "Windows", level: "상", icon: DiWindows, color: "#0078D6" },
       { name: "MacOS", level: "상", icon: SiMacos, color: "#ffffff" },
+      { name: "AWS", level: "중", icon: SiAmazon, color: "#FF9900" },
+      { name: "Linux", level: "중", icon: DiLinux, color: "#FCC624" },
     ],
   },
   etc: {
@@ -67,4 +67,4 @@ export const SKILL_CATEGORIES = {
       { name: "Slack", level: "중", icon: SiSlack, color: "#4A154B" },
     ],
   },
-}
+};

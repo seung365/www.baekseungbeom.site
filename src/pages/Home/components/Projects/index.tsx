@@ -1,4 +1,4 @@
-import projectsData from "../../../../constants/projectData";
+import projectsData from "../../../../constant/projectData";
 import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
 import ProjectItem from "./ProjectItem";
 import { S } from "./styles";
