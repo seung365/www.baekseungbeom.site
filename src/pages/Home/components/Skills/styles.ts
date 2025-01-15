@@ -1,4 +1,4 @@
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
 
 export const S = {
   Section: styled.section<{ $isVisible: boolean }>`
@@ -118,4 +118,4 @@ export const S = {
     font-weight: 600;
     font-size: 0.75rem;
   `,
-}
+};
