@@ -2,19 +2,6 @@ import experience from "../../../../constant/experience";
 import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
 import { S } from "./styles";
 
-type Item = {
-  name: string;
-  role: string;
-  period: string;
-  details?: string[];
-  status?: string;
-};
-
-type Card = {
-  title: string;
-  items: Item[];
-};
-
 const Experience = () => {
   const { sectionRef, isVisible } = useIntersectionObserver();
 
