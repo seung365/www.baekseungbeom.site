@@ -3,13 +3,13 @@ import styled from "@emotion/styled";
 export const S = {
   ProfileSection: styled.section<{ $isVisible: boolean }>`
     margin: 4rem auto;
+    display: flex;
     opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
     transform: translateY(${({ $isVisible }) => ($isVisible ? "0" : "20px")});
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    display: flex;
     align-items: center;
     gap: 2rem;
-
+    max-width: 1280px;
     @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
       flex-direction: column;
     }

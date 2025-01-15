@@ -6,7 +6,7 @@ export const S = {
     transform: translateY(${({ $isVisible }) => ($isVisible ? "0" : "20px")});
     transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 2rem 0;
-    max-width: 1000px;
+    max-width: 1280px;
     margin: 0 auto;
   `,
 
@@ -23,7 +23,6 @@ export const S = {
     display: flex;
     flex-direction: column;
     gap: 3rem;
-    padding: 0 1rem;
   `,
 
   CategorySection: styled.div<{ $isVisible: boolean; $delay: number }>`
