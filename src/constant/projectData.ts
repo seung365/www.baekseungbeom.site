@@ -12,6 +12,7 @@ const projectsData = [
       "프론트엔드 구현 (기여도 80%이상)",
     ],
     tech: "React · TypeScript · Emotion · TanStack Query · React Hook Form · React-Use-Gesture · ESLint · Prettier · webOS",
+    description: "스탠 바이 상태에도 정보를 제공하는 LG webOS 내 스탠바이 웹/앱",
   },
   {
     title: "1.618 (미술 중개 웹사이트)",
@@ -25,9 +26,10 @@ const projectsData = [
       "프론트엔드 개발 (기여도 50%)",
     ],
     tech: "React · TypeScript · Emotion · TanStack Query · React Hook Form · Chakra UI · Zustand · Pnpm · Vite · ESLint · Prettier · Amazon S3 · GitHub Actions",
+    description: "미술 작품 중개 웹사이트로 신진 작가와 미대생을 위한 플랫폼",
   },
   {
-    title: "알파메일 (메일 앱 생성 웹사이트)",
+    title: "알파메일\n (메일 앱 생성 웹사이트)",
     period: "2024.07 ~ 2024.08",
     githubUrl: "https://github.com/Beside-Potenday",
     team: "6명 (PM 1, 디자이너 1, 프론트엔드 2, 백엔드 2)",
@@ -38,6 +40,7 @@ const projectsData = [
       "프론트엔드 리더로 개발 진행 (PM과 백엔드와의 협의를 대표로 진행, 기여도 80%)",
     ],
     tech: "React · TypeScript · Emotion · TanStack Query · React Hook Form · ESLint · Prettier · MacOS",
+    description: "CLOVA X를 활용한 메일 앱 생성 웹사이트",
   },
   {
     title: "뇌졸중 자가진단 웹",
@@ -47,6 +50,7 @@ const projectsData = [
     purpose: "데이터를 바탕으로 뇌졸중 확률을 보여주고 근처 병원을 소개해주는 웹사이트입니다.",
     mainTasks: ["아이디어부터 기획, 개발까지 참여", "소프트웨어 설계 명세서 작성", "프론트엔드 개발 진행(기여도 100%)"],
     tech: "HTML · CSS · JavaScript",
+    description: "뇌졸중 확률을 보여주고 근처 병원을 소개해주는 웹사이트",
   },
   {
     title: "다배워",
@@ -61,6 +65,7 @@ const projectsData = [
       "프론트엔드 개발 진행(기여도 40%)",
     ],
     tech: "Java · Android Studio · Firebase",
+    description: "노인들을 위한 평생 교육 추천 앱",
   },
   {
     title: "평생 교육 추천 웹",
@@ -74,6 +79,7 @@ const projectsData = [
       "애저를 통한 배포 및 github action을 활용하여 CI/CD 연결",
     ],
     tech: "HTML · CSS · JavaScript · Azure · GitHub Actions",
+    description: "노인들을 위한 평생 교육 추천 웹사이트",
   },
 ];
 
