@@ -1,6 +1,5 @@
-import projectsData from "../../../../constant/projectData";
 import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
-import ProjectItem from "./ProjectItem";
+import ProjectGrid from "./ProjectGrid";
 import { S } from "./styles";
 
 const Projects = () => {
@@ -18,11 +17,7 @@ const Projects = () => {
       >
         Projects
       </S.Title>
-      <S.Timeline>
-        {projectsData.map((project, index) => (
-          <ProjectItem key={project.title} project={project} index={index} />
-        ))}
-      </S.Timeline>
+      <ProjectGrid />
     </S.Section>
   );
 };

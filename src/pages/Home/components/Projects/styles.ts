@@ -26,7 +26,7 @@ export const S = {
   Timeline: styled.div`
     position: relative;
     padding-left: 2rem;
-
+    display: Grid;
     &::before {
       content: "";
       position: absolute;
@@ -69,11 +69,6 @@ export const S = {
     padding: 2rem;
     border: 1px solid ${({ theme }) => `${theme.surface}20`};
     transition: all 0.3s ease;
-
-    &:hover {
-      border-color: ${({ theme }) => `${theme.surface}40`};
-      transform: translateX(10px);
-    }
   `,
 
   ProjectHeader: styled.div`
@@ -187,5 +182,180 @@ export const S = {
     opacity: 0.8;
     font-size: 1rem;
     line-height: 1.6;
+  `,
+
+  ProjectDetail: styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: ${({ theme }) => theme.background || "#ffffff"};
+    color: ${({ theme }) => theme.text || "#000000"};
+  `,
+
+  ProjectTitle: styled.h3`
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    white-space: pre-line;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    line-height: 1.4;
+    text-align: center;
+  `,
+
+  ProjectDescriptionDetail: styled.p`
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  `,
+
+  ProjectTechStackDetail: styled.p`
+    font-size: 0.9rem;
+    color: ${({ theme }) => theme.primary || "#0066cc"};
+  `,
+
+  GridContainer: styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  `,
+
+  ProjectItem: styled.div<{ isVisible: boolean; $index: number }>`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    background: ${({ theme }) => theme.background || "#ffffff"};
+    color: ${({ theme }) => theme.text || "#000000"};
+    cursor: pointer;
+    opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
+    transform: translateY(${({ isVisible }) => (isVisible ? "0" : "30px")});
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition-delay: ${({ $index }) => `${$index * 0.2}s`};
+
+    &:hover {
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    }
+  `,
+
+  ProjectTitleDetail: styled.h3`
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  `,
+
+  ProjectDescription: styled.p`
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  `,
+
+  ProjectTechStack: styled.p`
+    font-size: 0.9rem;
+    color: ${({ theme }) => theme.primary || "#0066cc"};
+  `,
+
+  ModalOverlay: styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease forwards;
+
+    &.closing {
+      animation: fadeOut 0.3s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        background-color: rgba(0, 0, 0, 0);
+      }
+      to {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      to {
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+  `,
+
+  ModalContent: styled.div`
+    background: ${({ theme }) => theme.background || "#ffffff"};
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease forwards;
+    transform-origin: center;
+
+    &.closing {
+      animation: slideOut 0.3s ease forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    @keyframes slideOut {
+      from {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+      }
+    }
+  `,
+
+  CloseButton: styled.button`
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+    color: ${({ theme }) => theme.text || "#000000"};
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+    }
   `,
 };
