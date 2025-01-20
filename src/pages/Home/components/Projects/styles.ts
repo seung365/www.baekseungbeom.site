@@ -69,6 +69,7 @@ export const S = {
     padding: 2rem;
     border: 1px solid ${({ theme }) => `${theme.surface}20`};
     transition: all 0.3s ease;
+    color: ${({ theme }) => theme.text};
   `,
 
   ProjectHeader: styled.div`
@@ -279,7 +280,6 @@ export const S = {
     align-items: center;
     z-index: 1000;
     animation: fadeIn 0.3s ease forwards;
-
     &.closing {
       animation: fadeOut 0.3s ease forwards;
     }

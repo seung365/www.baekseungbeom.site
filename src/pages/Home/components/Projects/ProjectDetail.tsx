@@ -18,7 +18,7 @@ const ProjectDetail = ({ project }: ProjectDeatilProps) => {
     <S.ProjectContent>
       <S.ProjectHeader>
         <div>
-          <h3>{project.title}</h3>
+          <S.ProjectTitleDetail>{project.title}</S.ProjectTitleDetail>
           <S.ProjectDate>{project.period}</S.ProjectDate>
         </div>
         {project.githubUrl && (
