@@ -1,7 +1,7 @@
 // ProjectItems.tsx
 import { useState } from "react";
 import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
-import ProjectDetail from "./ProjectDetail";
+import Modal from "./Modal";
 import { S } from "./styles";
 
 interface ProjectItemsProps {
@@ -22,9 +22,9 @@ interface ProjectItemsProps {
 }
 
 const ProjectItems = ({ title, description, project, index }: ProjectItemsProps) => {
+  const { sectionRef, isVisible } = useIntersectionObserver();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const { sectionRef, isVisible } = useIntersectionObserver();
 
   // 제목을 괄호 기준으로 분리
   const [mainTitle, subTitle] = title.split(/(\(.*?\))/);
@@ -38,7 +38,7 @@ const ProjectItems = ({ title, description, project, index }: ProjectItemsProps)
     setTimeout(() => {
       setIsModalOpen(false);
       setIsClosing(false);
-    }, 300); // 애니메이션 시간과 동일하게 설정
+    }, 300);
   };
 
   return (
@@ -52,12 +52,7 @@ const ProjectItems = ({ title, description, project, index }: ProjectItemsProps)
       </S.ProjectItem>
 
       {isModalOpen && (
-        <S.ModalOverlay onClick={handleClose} className={isClosing ? "closing" : ""}>
-          <S.ModalContent onClick={(e) => e.stopPropagation()} className={isClosing ? "closing" : ""}>
-            <S.CloseButton onClick={handleClose}>&times;</S.CloseButton>
-            <ProjectDetail project={project} index={0} />
-          </S.ModalContent>
-        </S.ModalOverlay>
+        <Modal isModalOpen={isModalOpen} handleClose={handleClose} isClosing={isClosing} project={project} />
       )}
     </>
   );
