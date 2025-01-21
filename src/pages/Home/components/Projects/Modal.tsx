@@ -30,16 +30,18 @@ const Modal = ({ isModalOpen, handleClose, isClosing, project }: ModalProps) => 
 
     if (isModalOpen) {
       document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
     }
+
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = "auto";
+    };
   }, [isModalOpen, handleClose]);
 
   const modalContent = (
     <S.ModalOverlay onClick={handleClose} className={isClosing ? "closing" : ""}>
       <S.ModalContent
         onClick={(e) => {
-          e.preventDefault(); // 이벤트 기본 동작 방지
           e.stopPropagation(); // 이벤트 버블링 중지
         }}
         className={isClosing ? "closing" : ""}
