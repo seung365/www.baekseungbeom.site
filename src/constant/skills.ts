@@ -2,7 +2,6 @@ import { DiGit, DiJava, DiJavascript1, DiLinux, DiMysql, DiPython, DiReact, DiWi
 import {
   SiAmazon,
   SiC,
-  SiChakraui,
   SiCplusplus,
   SiCss3,
   SiFigma,
@@ -13,6 +12,7 @@ import {
   SiNotion,
   SiReactquery,
   SiSlack,
+  SiTailwindcss,
   SiTypescript,
   SiVercel,
 } from "react-icons/si";
@@ -36,7 +36,7 @@ export const SKILL_CATEGORIES = {
     skills: [
       { name: "React", level: "상", icon: DiReact, color: "#61DAFB" },
       { name: "Emotion", level: "중", emoji: "👩‍🎤", color: "#D36AC2" },
-      { name: "Chakra UI", level: "중", icon: SiChakraui, color: "#319795" },
+      { name: "Tailwind", level: "중", icon: SiTailwindcss, color: "#319795" },
       { name: "TanStack Query", level: "중", icon: SiReactquery, color: "#FF4154" },
     ],
   },
