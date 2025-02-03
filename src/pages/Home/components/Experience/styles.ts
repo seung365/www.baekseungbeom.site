@@ -1,4 +1,4 @@
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
 
 export const S = {
   Section: styled.section<{ $isVisible: boolean }>`
@@ -17,10 +17,14 @@ export const S = {
 
   ExperienceGrid: styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-top: 2rem;
     position: relative;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+      grid-template-columns: 1fr;
+    }
   `,
 
   ExperienceCard: styled.div`
@@ -146,4 +150,4 @@ export const S = {
     color: white;
     margin-top: 0.5rem;
   `,
-}
+};
