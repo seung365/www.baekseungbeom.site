@@ -19,7 +19,7 @@ const experience: Card[] = [
         name: "경북대학교 컴퓨터학부",
         role: "심화컴퓨터전공 재학 (4.5 기준 - 전체 4.08, 전공 4.12)",
         period: "2020.03 ~ ",
-        details: ["성적 우수 장학금 5회", "130/150학점 이수"],
+        details: ["성적 우수 장학금 6회", "130/150학점 이수"],
       },
       {
         name: "육군",
@@ -55,12 +55,12 @@ const experience: Card[] = [
       {
         name: "해달 아이디어톤 & 해커톤",
         role: "TF",
-        period: "2024.11",
+        period: "2024.11 ~ 2025.02",
       },
       {
         name: "Google Developer Group KNU",
         role: "4기 FE Member",
-        period: "2024.09 ~",
+        period: "2024.09 ~ 2025.02",
       },
       {
         name: "카카오 테크 캠퍼스",
