@@ -1,22 +1,9 @@
-import { SKILL_CATEGORIES } from "../../../../constant/skills"
-import useIntersectionObserver from "../../../../hooks/useIntersectionObserver"
-import { S } from "./styles"
+import { SKILL_CATEGORIES } from "../../../../constant/skills";
+import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
+import { S } from "./styles";
 
 const Skills = () => {
-  const { sectionRef, isVisible } = useIntersectionObserver()
-
-  const getLevelColor = (level: string) => {
-    switch (level) {
-      case "상":
-        return "#4ecdc4"
-      case "중":
-        return "#ffd93d"
-      case "하":
-        return "#ff6b6b"
-      default:
-        return "#6c757d"
-    }
-  }
+  const { sectionRef, isVisible } = useIntersectionObserver();
 
   return (
     <S.Section ref={sectionRef} $isVisible={isVisible}>
@@ -32,9 +19,8 @@ const Skills = () => {
                     <S.CardFront $color={skill.color}>
                       {skill.icon ? <skill.icon size={40} /> : <span style={{ fontSize: "40px" }}>{skill.emoji}</span>}
                     </S.CardFront>
-                    <S.CardBack className="back" $levelColor={getLevelColor(skill.level)}>
+                    <S.CardBack className="back" $color={skill.color}>
                       <S.SkillName>{skill.name}</S.SkillName>
-                      <S.SkillLevel $levelColor={getLevelColor(skill.level)}>{skill.level}</S.SkillLevel>
                     </S.CardBack>
                   </S.IconWrapper>
                 </S.SkillItem>
@@ -44,7 +30,7 @@ const Skills = () => {
         ))}
       </S.SkillsContainer>
     </S.Section>
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;

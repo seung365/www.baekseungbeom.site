@@ -82,7 +82,7 @@ export const S = {
     color: ${({ $color, theme }) => ($color === "#ffffff" ? theme.background : $color)};
   `,
 
-  CardBack: styled.div<{ $levelColor: string }>`
+  CardBack: styled.div<{ $color: string }>`
     position: absolute;
     font-size: 0.75rem;
     font-weight: 600;
@@ -94,7 +94,7 @@ export const S = {
     justify-content: center;
     background: black;
     border-radius: 12px;
-    border-left: 3px solid ${({ $levelColor }) => $levelColor};
+    border-left: 3px solid ${({ $color }) => $color};
     padding: 0.5rem;
     opacity: 0;
     transform: rotateY(90deg);
@@ -102,7 +102,6 @@ export const S = {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   `,
-
   SkillName: styled.span`
     font-wieght: 700;
     color: #fff;
