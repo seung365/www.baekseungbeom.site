@@ -37,7 +37,7 @@ const Experience = () => {
                       <S.ItemName>(주) 셈웨어 ICT 인턴십 프로그램</S.ItemName>
                       <S.ItemPeriod>2025.03 ~ </S.ItemPeriod>
                     </S.ItemHeader>
-                    <S.ItemRole>Frontend Developer</S.ItemRole>
+                    <S.ItemRole>React, TypeScript, MATHCORE API, GitLab</S.ItemRole>
                   </S.ItemContainer>
                 </>
               )}
