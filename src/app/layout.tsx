@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { ClientProviders } from "../components/ClientProviders";
 
 export const metadata: Metadata = {
   title: "Baek Seungbeom",
@@ -46,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko-KR">
       <body>
         <div id="modal-root"></div>
-        <ClientProviders>{children}</ClientProviders>
+        <>{children}</>
       </body>
     </html>
   );
