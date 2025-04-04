@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { ClientProviders } from "../components/ClientProviders";
 
 export const metadata: Metadata = {
-  title: "백승범 (Baek Seungbeom) - 프론트엔드 개발자 포트폴리오",
+  title: "Baek Seungbeom",
   description:
     "프론트엔드 개발자 백승범의 포트폴리오 웹사이트입니다. React, TypeScript 등을 활용한 웹 개발 프로젝트를 확인하실 수 있습니다.",
   keywords: "백승범, baekseungbeom, 프론트엔드 개발자, frontend developer, 웹 개발자",
@@ -35,6 +35,9 @@ export const metadata: Metadata = {
   },
   other: {
     language: "ko",
+  },
+  icons: {
+    icon: "/logo.svg",
   },
 };
 
