@@ -1,35 +1,29 @@
-import styled from "@emotion/styled"
-import { useEffect } from "react"
-import ScrollToTop from "../../components/common/ScrollToTop"
-import ThemeToggle from "../../components/common/ThemeToggle"
-import { useTheme } from "../../hooks/useTheme"
-import Experience from "./components/Experience"
-import Footer from "./components/Footer"
-import Intro from "./components/Intro"
-import Profile from "./components/Profile"
-import Projects from "./components/Projects"
-import Skills from "./components/Skills"
+import styled from "@emotion/styled";
+import { useEffect } from "react";
+import ScrollToTop from "../../components/common/ScrollToTop";
+import ThemeToggle from "../../components/common/ThemeToggle";
+import useThemeStore from "../../store/ThemeStore";
+import Experience from "./components/Experience";
+import Intro from "./components/Intro";
+import Profile from "./components/Profile";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
 
-type HomeProps = {
-  isDark: boolean
-  setIsDark: (isDark: boolean) => void
-}
-
-const Home = ({ isDark, setIsDark }: HomeProps) => {
-  useTheme(isDark, setIsDark)
+const Home = () => {
+  const themeStore = useThemeStore();
 
   useEffect(() => {
     setTimeout(() => {
       window.scrollTo({
         top: 0,
         behavior: "smooth",
-      })
-    }, 100)
-  }, [])
+      });
+    }, 100);
+  }, []);
 
   return (
     <>
-      <ThemeToggle isDark={isDark} setIsDark={setIsDark} />
+      <ThemeToggle {...themeStore} />
       <ScrollToTop />
       <Intro />
       <MainLayout>
@@ -38,10 +32,9 @@ const Home = ({ isDark, setIsDark }: HomeProps) => {
         <Experience />
         <Projects />
       </MainLayout>
-      <Footer />
     </>
-  )
-}
+  );
+};
 
 const MainLayout = styled.div`
   background: ${({ theme }) => theme.background};
@@ -50,5 +43,5 @@ const MainLayout = styled.div`
   padding: 2rem;
   position: relative;
   overflow: visible;
-`
-export default Home
+`;
+export default Home;

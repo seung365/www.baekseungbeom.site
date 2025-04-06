@@ -1,18 +1,21 @@
-import { useEffect } from "react"
+import { useEffect } from "react";
+import useThemeStore from "../store/ThemeStore";
 
-export const useTheme = (isDark: boolean, setIsDark: (isDark: boolean) => void) => {
+export const useTheme = () => {
+  const { isDark, setIsDark } = useThemeStore();
+
   useEffect(() => {
-    const savedTheme = localStorage.getItem("baekseungbeom-theme")
+    const savedTheme = localStorage.getItem("baekseungbeom-theme");
     if (savedTheme) {
-      setIsDark(savedTheme === "dark")
+      setIsDark(savedTheme === "dark");
     }
-  }, [setIsDark])
+  }, [setIsDark]);
 
   const toggleTheme = () => {
-    const newTheme = !isDark
-    setIsDark(newTheme)
-    localStorage.setItem("baekseungbeom-theme", newTheme ? "dark" : "light")
-  }
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    localStorage.setItem("baekseungbeom-theme", newTheme ? "dark" : "light");
+  };
 
-  return { toggleTheme }
-}
+  return { toggleTheme };
+};
