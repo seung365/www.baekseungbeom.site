@@ -1,18 +1,15 @@
-import styled from "@emotion/styled"
-import { useTheme } from "../../hooks/useTheme"
+import styled from "@emotion/styled";
+import useThemeStore from "../../store/ThemeStore";
+import { useTheme } from "../../hooks/useTheme";
 
-type ThemeToggleProps = {
-  isDark: boolean
-  setIsDark: (isDark: boolean) => void
-}
+const ThemeToggle = () => {
+  const { toggleTheme } = useTheme();
+  const { isDark } = useThemeStore();
 
-const ThemeToggle = ({ isDark, setIsDark }: ThemeToggleProps) => {
-  const { toggleTheme } = useTheme(isDark, setIsDark)
+  return <ToggleButton onClick={toggleTheme}>{isDark ? "Dark mode" : "Light mode"}</ToggleButton>;
+};
 
-  return <ToggleButton onClick={toggleTheme}>{isDark ? "Dark mode" : "Light mode"}</ToggleButton>
-}
-
-export default ThemeToggle
+export default ThemeToggle;
 
 const ToggleButton = styled.button`
   position: fixed;
@@ -42,4 +39,4 @@ const ToggleButton = styled.button`
     height: 32px;
     font-size: 0.8rem;
   }
-`
+`;
