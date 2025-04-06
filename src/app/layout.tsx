@@ -1,9 +1,9 @@
 import { Metadata } from "next";
+import ClientProvider from "../components/common/ClientProvider";
 
 export const metadata: Metadata = {
-  title: "Baek Seungbeom",
-  description:
-    "프론트엔드 개발자 백승범의 포트폴리오 웹사이트입니다. React, TypeScript 등을 활용한 웹 개발 프로젝트를 확인하실 수 있습니다.",
+  title: "개발자 백승범",
+  description: "프론트엔드 개발자 백승범입니다. React, TypeScript 등을 활용한 웹 개발 프로젝트를 확인하실 수 있습니다.",
   keywords: "백승범, baekseungbeom, 프론트엔드 개발자, frontend developer, 웹 개발자",
   authors: [{ name: "백승범", url: "https://www.baekseungbeom.site" }],
   creator: "백승범",
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko-KR">
       <body>
         <div id="modal-root"></div>
-        <>{children}</>
+        <ClientProvider>{children}</ClientProvider>
       </body>
     </html>
   );
