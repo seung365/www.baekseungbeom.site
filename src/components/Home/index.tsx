@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { useEffect } from "react";
 import ScrollToTop from "../../components/common/ScrollToTop";
-import ThemeToggle from "../../components/common/ThemeToggle";
 import Experience from "./components/Experience";
 import Intro from "./components/Intro";
 import Profile from "./components/Profile";
@@ -20,7 +19,6 @@ const Home = () => {
 
   return (
     <>
-      <ThemeToggle />
       <ScrollToTop />
       <Intro />
       <MainLayout>
