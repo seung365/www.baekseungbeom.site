@@ -16,6 +16,7 @@ const ToggleButton = styled.button`
   color: ${({ theme }) => theme.text};
   transition: all 0.3s ease;
   border: none;
+  font: inherit;
 
   &:hover {
     transform: scale(1.1);

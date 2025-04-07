@@ -7,15 +7,14 @@ export const S = {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    top: 1rem;
-    right: 1rem;
     z-index: 10;
-    height: 40px;
+    height: 60px;
     width: 100%;
-    background: transparent;
+    background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.text};
-    padding: 0 20px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding: 0.8rem 1rem;
   `,
 
   NavList: styled.ul`
