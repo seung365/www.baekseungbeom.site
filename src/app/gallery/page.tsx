@@ -1,10 +1,22 @@
+"use client";
+
+import styled from "@emotion/styled";
+
 const gallery = () => {
   return (
-    <div>
+    <Wrapper>
       <h1>Gallery</h1>
       <p>This is the gallery page.</p>
-    </div>
+    </Wrapper>
   );
 };
 
 export default gallery;
+
+const Wrapper = styled.div`
+  height: 100vh;
+  background: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
+  display: flex;
+  padding-top: 60px;
+`;
