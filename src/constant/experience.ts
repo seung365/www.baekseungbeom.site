@@ -28,6 +28,11 @@ const experience: Card[] = [
     title: "Awards",
     items: [
       {
+        name: "엘리스 포트폴리오 트랙 프로젝트",
+        role: "대상",
+        period: "2025.03",
+      },
+      {
         name: "제10회 대한민국 SW융합 해커톤 대회",
         role: "본선 진출",
         period: "2023.08",
@@ -42,20 +47,16 @@ const experience: Card[] = [
         role: "장려상",
         period: "2020.11",
       },
-      {
-        name: "엘리스 포트폴리오 트랙 프로젝트",
-        role: "대상",
-        period: "2025.03",
-      },
     ],
   },
   {
     title: "Activities",
     items: [
       {
-        name: "해달 아이디어톤 & 해커톤",
-        role: "TF",
-        period: "2024.11 ~ 2025.02",
+        name: "엘리스 포트폴리오 트랙",
+        role: "1기 FE",
+        period: "2025.01 ~ 2025.03",
+        status: "수료",
       },
       {
         name: "Google Developer Group KNU",
@@ -68,22 +69,15 @@ const experience: Card[] = [
         period: "2024.04 ~ 2024.11",
         status: "수료",
       },
-
       {
         name: "해달",
         role: "경북대학교 코딩 개발 동아리",
-        period: "2024.03 ~",
+        period: "2024.03 ~ 2025.02",
       },
       {
         name: "부스트코스",
         role: "DATA SCIENCE PROJECTS 코칭스터디",
         period: "2024.01 ~ 2024.02",
-        status: "수료",
-      },
-      {
-        name: "엘리스 포트폴리오 트랙",
-        role: "1기 FE",
-        period: "2025.01 ~ 2025.03",
         status: "수료",
       },
     ],
