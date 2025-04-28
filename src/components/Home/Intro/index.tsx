@@ -1,14 +1,14 @@
-import { useRef } from "react"
-import useIntersectionObserver from "../../../../hooks/useIntersectionObserver"
-import { useScroll } from "../../../../hooks/useScroll"
-import { S } from "./styles"
+import { useRef } from "react";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
+import { useScroll } from "@/hooks/useScroll";
+import { S } from "./styles";
 
 const Intro = () => {
-  const { sectionRef, isVisible } = useIntersectionObserver()
-  const contentRef = useRef<HTMLDivElement>(null)
-  const contactRef = useRef<HTMLDivElement>(null)
+  const { sectionRef, isVisible } = useIntersectionObserver();
+  const contentRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
 
-  const { handleScrollDown } = useScroll(sectionRef, contentRef, contactRef)
+  const { handleScrollDown } = useScroll(sectionRef, contentRef, contactRef);
 
   return (
     <S.Section ref={sectionRef}>
@@ -36,7 +36,7 @@ const Intro = () => {
         <S.ScrollArrow>↓</S.ScrollArrow>
       </S.ScrollDownButton>
     </S.Section>
-  )
-}
+  );
+};
 
-export default Intro
+export default Intro;

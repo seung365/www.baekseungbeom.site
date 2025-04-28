@@ -1,6 +1,6 @@
 // ProjectItems.tsx
 import { useState } from "react";
-import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import Modal from "./Modal";
 import { S } from "./styles";
 

@@ -1,4 +1,4 @@
-import projects from "../../../../constant/projectData";
+import projects from "@/constant/projectData";
 import ProjectItems from "./ProjectItems";
 import { S } from "./styles";
 

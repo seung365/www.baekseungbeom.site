@@ -1,5 +1,5 @@
-import { SKILL_CATEGORIES } from "../../../../constant/skills";
-import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
+import SKILL_CATEGORIES from "@/constant/skills";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import { S } from "./styles";
 
 const Skills = () => {

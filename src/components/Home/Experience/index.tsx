@@ -1,5 +1,5 @@
-import experience from "../../../../constant/experience";
-import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
+import experience from "@/constant/experience";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import { S } from "./styles";
 
 const Experience = () => {

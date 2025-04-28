@@ -17,7 +17,7 @@ import {
   SiVercel,
 } from "react-icons/si";
 
-export const SKILL_CATEGORIES = {
+const SKILL_CATEGORIES = {
   programming: {
     title: "Programming Languages",
     skills: [
@@ -68,3 +68,5 @@ export const SKILL_CATEGORIES = {
     ],
   },
 };
+
+export default SKILL_CATEGORIES;

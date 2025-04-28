@@ -1,4 +1,4 @@
-import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import ProjectGrid from "./ProjectGrid";
 import { S } from "./styles";
 
