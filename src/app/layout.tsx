@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import ClientProvider from "../components/common/ClientProvider";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "개발자 백승범",
@@ -44,20 +43,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko-KR">
-      <head>
-        <Script id="theme-script" strategy="beforeInteractive">
-          {`
-            (function() {
-              try {
-                var savedTheme = localStorage.getItem('theme');
-                if (savedTheme === 'dark') {
-                  document.documentElement.setAttribute('data-theme', 'dark');
-                }
-              } catch (e) {}
-            })();
-          `}
-        </Script>
-      </head>
       <body>
         <div id="modal-root"></div>
         <ClientProvider>{children}</ClientProvider>
