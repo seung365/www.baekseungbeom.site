@@ -19,7 +19,7 @@ export const S = {
     margin-bottom: 4rem;
     text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 
-    color: ${({ theme }) => theme.text};
+    color: var(--color-text);
     letter-spacing: -0.02em;
   `,
 
@@ -34,7 +34,7 @@ export const S = {
       top: 0;
       bottom: 0;
       width: 2px;
-      background: ${({ theme }) => `${theme.primary}30`};
+      background: rgba(var(--color-primary), 0.3);
     }
   `,
 
@@ -58,18 +58,18 @@ export const S = {
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    background: ${({ theme }) => theme.primary};
-    border: 2px solid ${({ theme }) => `${theme.surface}80`};
+    background: var(--color-primary);
+    border: 2px solid rgba(var(--color-surface), 0.8);
   `,
 
   ProjectContent: styled.div`
-    background: ${({ theme }) => `${theme.surface}10`};
+    background: rgba(var(--color-surface), 0.1);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     padding: 2rem;
-    border: 1px solid ${({ theme }) => `${theme.surface}20`};
+    border: 1px solid rgba(var(--color-surface), 0.2);
     transition: all 0.3s ease;
-    color: ${({ theme }) => theme.text};
+    color: var(--color-text);
   `,
 
   ProjectHeader: styled.div`
@@ -87,24 +87,24 @@ export const S = {
 
   ProjectDate: styled.span`
     font-size: 0.9rem;
-    color: ${({ theme }) => theme.text};
+    color: var(--color-text);
     opacity: 0.7;
   `,
 
   ProjectLinks: styled.div`
     a {
-      color: ${({ theme }) => theme.text};
+      color: var(--color-text);
       opacity: 0.7;
       text-decoration: none;
       padding: 0.5rem 1rem;
-      border: 1px solid ${({ theme }) => `${theme.surface}20`};
+      border: 1px solid 
       border-radius: 8px;
       transition: all 0.3s ease;
 
       &:hover {
-        color: ${({ theme }) => theme.primary};
-        border-color: ${({ theme }) => theme.primary};
-        background: ${({ theme }) => `${theme.primary}10`};
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+        background: rgba(var(--color-primary), 0.1);
       }
     }
   `,
@@ -117,7 +117,7 @@ export const S = {
 
   InfoItem: styled.div`
     p {
-      color: ${({ theme }) => theme.text};
+      color: var(--color-text);
       opacity: 0.8;
       font-size: 1rem;
       line-height: 1.6;
@@ -126,8 +126,8 @@ export const S = {
 
   Label: styled.span`
     display: inline-block;
-    background: ${({ theme }) => `${theme.primary}10`};
-    color: ${({ theme }) => theme.primary};
+    background: rgba(var(--color-primary), 0.1);
+    color: var(--color-primary);
     padding: 0.25rem 0.75rem;
     border-radius: 4px;
     font-size: 0.9rem;
@@ -145,7 +145,7 @@ export const S = {
   SectionTitle: styled.h4`
     font-size: 1.1rem;
     font-weight: 600;
-    color: ${({ theme }) => theme.primary};
+    color: var(--color-primary);
     margin-bottom: 1rem;
   `,
 
@@ -155,7 +155,7 @@ export const S = {
     margin: 0;
 
     li {
-      color: ${({ theme }) => theme.text};
+      color: var(--color-text);
       opacity: 0.9;
       font-size: 1rem;
       margin-bottom: 0.75rem;
@@ -165,7 +165,7 @@ export const S = {
 
       &::before {
         content: "•";
-        color: ${({ theme }) => theme.primary};
+        color: var(--color-primary);
         position: absolute;
         left: 0;
         font-size: 1.5rem;
@@ -179,7 +179,7 @@ export const S = {
   `,
 
   TechStack: styled.p`
-    color: ${({ theme }) => theme.text};
+    color: var(--color-text);
     opacity: 0.8;
     font-size: 1rem;
     line-height: 1.6;
@@ -192,8 +192,8 @@ export const S = {
     align-items: center;
     padding: 2rem;
     border-radius: 1rem;
-    background: ${({ theme }) => theme.background || "#ffffff"};
-    color: ${({ theme }) => theme.text || "#000000"};
+    background: var(--color-background);
+    color: var(--color-text);
   `,
 
   ProjectTitle: styled.h3`
@@ -214,7 +214,7 @@ export const S = {
 
   ProjectTechStackDetail: styled.p`
     font-size: 0.9rem;
-    color: ${({ theme }) => theme.primary || "#0066cc"};
+    color: var(--color-primary);
   `,
 
   GridContainer: styled.div`
@@ -239,8 +239,8 @@ export const S = {
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-    background: ${({ theme }) => theme.background || "#ffffff"};
-    color: ${({ theme }) => theme.text || "#000000"};
+    background: var(--color-card-background);
+    color: var(--color-background);
     cursor: pointer;
     opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
     transform: translateY(${({ isVisible }) => (isVisible ? "0" : "30px")});
@@ -265,7 +265,7 @@ export const S = {
 
   ProjectTechStack: styled.p`
     font-size: 0.9rem;
-    color: ${({ theme }) => theme.primary || "#0066cc"};
+    color: var(--color-primary);
   `,
 
   ModalOverlay: styled.div`
@@ -304,7 +304,7 @@ export const S = {
   `,
 
   ModalContent: styled.div`
-    background: ${({ theme }) => theme.background || "#ffffff"};
+    background: var(--color-background);
     padding: 2rem;
     border-radius: 8px;
     max-width: 90%;
@@ -346,7 +346,7 @@ export const S = {
     position: absolute;
     top: 0.2rem;
     right: 0.2rem;
-    color: ${({ theme }) => theme.text || "#000000"};
+    color: var(--color-text);
     border: none;
     font-size: 1.5rem;
     cursor: pointer;

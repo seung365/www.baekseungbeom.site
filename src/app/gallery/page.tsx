@@ -15,8 +15,8 @@ export default gallery;
 
 const Wrapper = styled.div`
   height: 100vh;
-  background: ${({ theme }) => theme.background};
-  color: ${({ theme }) => theme.text};
+  background: var(--color-background);
+  color: var(--color-text);
   display: flex;
   padding-top: 60px;
 `;

@@ -42,7 +42,7 @@ const Modal = ({ isModalOpen, handleClose, isClosing, project }: ModalProps) => 
     <S.ModalOverlay onClick={handleClose} className={isClosing ? "closing" : ""}>
       <S.ModalContent
         onClick={(e) => {
-          e.stopPropagation(); // 이벤트 버블링 중지
+          e.stopPropagation();
         }}
         className={isClosing ? "closing" : ""}
       >

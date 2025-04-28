@@ -10,8 +10,8 @@ export const S = {
     z-index: 10;
     height: 60px;
     width: 100%;
-    background: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.text};
+    background: var(--color-background);
+    color: var(--color-text);
     font-size: 0.9rem;
     font-weight: 400;
     padding: 0.8rem 1rem;

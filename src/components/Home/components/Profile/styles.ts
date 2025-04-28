@@ -10,7 +10,7 @@ export const S = {
     align-items: center;
     gap: 2rem;
     max-width: 1280px;
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    @media (max-width: var(--breakpoint-mobile)) {
       flex-direction: column;
     }
   `,

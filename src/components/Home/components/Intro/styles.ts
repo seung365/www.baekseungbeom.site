@@ -1,5 +1,5 @@
-import { keyframes } from "@emotion/react"
-import styled from "@emotion/styled"
+import { keyframes } from "@emotion/react";
+import styled from "@emotion/styled";
 
 const fadeIn = keyframes`
  0% {
@@ -8,7 +8,7 @@ const fadeIn = keyframes`
  100% {
    opacity: 1;
  }
-`
+`;
 
 const fadeInUp = keyframes`
   0% {
@@ -19,7 +19,7 @@ const fadeInUp = keyframes`
     opacity: 1;
     transform: translateY(0);
   }
-`
+`;
 
 const pulseAnimation = keyframes`
 0% {
@@ -34,7 +34,7 @@ const pulseAnimation = keyframes`
   transform: translateY(0);
   opacity: 1;
 }
-`
+`;
 export const S = {
   ScrollDownButton: styled.button<{ $isVisible: boolean }>`
     position: absolute;
@@ -52,7 +52,7 @@ export const S = {
   `,
 
   ScrollArrow: styled.span`
-    color: ${({ theme }) => theme.text};
+    color: var(--color-text);
     font-size: 2rem;
     animation: ${pulseAnimation} 2s ease-in-out infinite;
   `,
@@ -66,7 +66,7 @@ export const S = {
     padding: 2rem;
     position: relative;
     overflow: hidden;
-    background: ${({ theme }) => theme.background};
+    background: var(--color-background);
 
     &::before {
       position: absolute;
@@ -99,7 +99,7 @@ export const S = {
   `,
 
   ContactWrapper: styled.div`
-    color: ${({ theme }) => theme.text};
+    color: var(--color-text);
     display: flex;
     flex-direction: column;
     font-size: 1rem;
@@ -136,7 +136,7 @@ export const S = {
   `,
 
   FirstName: styled.div`
-    color: ${({ theme }) => theme.text};
+    color: var(--color-text);
     font-weight: 600;
     opacity: 0;
     margin-bottom: 1rem;
@@ -146,11 +146,11 @@ export const S = {
   `,
 
   LastName: styled.div`
-    color: ${({ theme }) => theme.text};
+    color: var(--color-text);
     font-weight: 600;
     opacity: 0;
     line-height: 1;
     letter-spacing: -0.05em;
     animation: ${fadeIn} 0.8s ease 0.2s forwards;
   `,
-}
+};

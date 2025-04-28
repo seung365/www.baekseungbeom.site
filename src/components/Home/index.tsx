@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useEffect } from "react";
-import ScrollToTop from "../../components/common/ScrollToTop";
+import ScrollToTop from "../common/ScrollToTop";
 import Experience from "./components/Experience";
 import Intro from "./components/Intro";
 import Profile from "./components/Profile";
@@ -32,8 +32,8 @@ const Home = () => {
 };
 
 const MainLayout = styled.div`
-  background: ${({ theme }) => theme.background};
-  color: ${({ theme }) => theme.text};
+  background: var(--color-background);
+  color: var(--color-text);
   min-height: 100vh;
   padding: 2rem;
   position: relative;

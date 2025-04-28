@@ -184,11 +184,10 @@ const formatDate = (dateString: string) => {
 
 export default AdminDashboard;
 
-// 스타일 컴포넌트
 const Wrapper = styled.div`
   min-height: 100vh;
-  background: ${({ theme }) => theme.background || "#f5f7fa"};
-  color: ${({ theme }) => theme.text || "#333"};
+  background: var(--color-background);
+  color: var(--color-text);
   padding: 80px 20px 40px;
 `;
 
@@ -239,11 +238,11 @@ const SectionTitle = styled.h2`
   margin-top: 0;
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 1px solid ${({ theme }) => theme.borderColor || "#eaeaea"};
+  border-bottom: 1px solid var(--color-border);
 `;
 
 const UploadSection = styled.section`
-  background: ${({ theme }) => theme.cardBackground || "#fff"};
+  background: var(--color-card-background);
   border-radius: 8px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -286,7 +285,7 @@ const ImagePreview = styled.div`
 
 const PreviewInfo = styled.div`
   font-size: 14px;
-  color: ${({ theme }) => theme.textSecondary || "#666"};
+  color: var(--color-text-secondary);
 
   p {
     margin: 5px 0;
@@ -343,7 +342,7 @@ const StatusMessage = styled.div<{ success?: boolean }>`
 `;
 
 const ImagesSection = styled.section`
-  background: ${({ theme }) => theme.cardBackground || "#fff"};
+  background: var(--color-card-background);
   border-radius: 8px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -352,7 +351,7 @@ const ImagesSection = styled.section`
 const EmptyState = styled.div`
   padding: 40px 0;
   text-align: center;
-  color: ${({ theme }) => theme.textSecondary || "#666"};
+  color: var(--color-text-secondary);
 `;
 
 const ImageGrid = styled.div`
@@ -385,7 +384,7 @@ const ImageThumbnail = styled.div`
 
 const ImageDetails = styled.div`
   padding: 8px;
-  background-color: ${({ theme }) => theme.cardBackground || "#fff"};
+  background-color: var(--color-card-background);
 
   p {
     margin: 0 0 4px 0;
@@ -397,7 +396,7 @@ const ImageDetails = styled.div`
   }
 
   small {
-    color: ${({ theme }) => theme.textSecondary || "#666"};
+    color: var(--color-text-secondary);
     font-size: 12px;
   }
 `;

@@ -10,7 +10,7 @@ export const S = {
     overflow: visible;
     position: relative;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    @media (max-width: var(--breakpoint-mobile)) {
       min-height: auto;
     }
   `,
@@ -22,7 +22,7 @@ export const S = {
     margin-top: 2rem;
     position: relative;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    @media (max-width: var(--breakpoint-mobile)) {
       grid-template-columns: 1fr;
     }
   `,
@@ -42,7 +42,7 @@ export const S = {
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    @media (max-width: var(--breakpoint-mobile)) {
       position: relative;
       border-radius: 15px;
     }
@@ -62,7 +62,7 @@ export const S = {
       width: 100%;
     }
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    @media (max-width: var(--breakpoint-mobile)) {
       height: auto;
       margin-top: 2rem;
 
@@ -77,7 +77,7 @@ export const S = {
     font-weight: bold;
     margin-bottom: 3rem;
     text-transform: uppercase;
-    color: ${({ theme }) => theme.text};
+    color: var(--color-text);
     position: relative;
     text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 
@@ -113,7 +113,7 @@ export const S = {
   ItemName: styled.h4`
     font-size: 1.1rem;
     font-weight: 600;
-    color: ${({ theme }) => theme.text};
+    color: var(--color-text);
   `,
 
   ItemPeriod: styled.span`
@@ -123,7 +123,7 @@ export const S = {
 
   ItemRole: styled.p`
     font-size: 1rem;
-    color: ${({ theme }) => theme.text};
+    color: var(--color-text);
     opacity: 0.8;
     margin-bottom: 0.5rem;
   `,
@@ -135,7 +135,7 @@ export const S = {
 
     li {
       font-size: 0.9rem;
-      color: ${({ theme }) => theme.text};
+      color: var(--color-text);
       opacity: 0.7;
       margin-bottom: 0.3rem;
     }

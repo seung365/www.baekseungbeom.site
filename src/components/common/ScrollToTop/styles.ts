@@ -8,8 +8,8 @@ export const S = {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: ${({ theme }) => theme.surface};
-    color: ${({ theme }) => theme.text};
+    background: var(--color-surface);
+    color: var(--color-text);
     font-size: 1.5rem;
     display: flex;
     align-items: center;
@@ -20,7 +20,7 @@ export const S = {
 
     &:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 10px ${({ theme }) => theme.primary}40;
+      box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.25);
     }
   `,
 };

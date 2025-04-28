@@ -79,7 +79,7 @@ export const S = {
     justify-content: center;
     background: rgba(0, 0, 0, 0.03);
     border-radius: 12px;
-    color: ${({ $color, theme }) => ($color === "#ffffff" ? theme.background : $color)};
+    color: ${({ $color }) => ($color === "#ffffff" ? "var(--color-background)" : $color)};
   `,
 
   CardBack: styled.div<{ $color: string }>`
