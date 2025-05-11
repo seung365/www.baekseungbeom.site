@@ -1,3 +1,4 @@
+import { BREAKPOINTS } from "@/styles/theme";
 import styled from "@emotion/styled";
 
 export const S = {
@@ -10,7 +11,7 @@ export const S = {
     overflow: visible;
     position: relative;
 
-    @media (max-width: var(--breakpoint-mobile)) {
+    @media (max-width: ${BREAKPOINTS.mobile}) {
       min-height: auto;
     }
   `,
@@ -22,7 +23,7 @@ export const S = {
     margin-top: 2rem;
     position: relative;
 
-    @media (max-width: var(--breakpoint-mobile)) {
+    @media (max-width: ${BREAKPOINTS.mobile}) {
       grid-template-columns: 1fr;
     }
   `,
@@ -42,7 +43,7 @@ export const S = {
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
-    @media (max-width: var(--breakpoint-mobile)) {
+    @media (max-width: ${BREAKPOINTS.mobile}) {
       position: relative;
       border-radius: 15px;
     }
@@ -62,7 +63,7 @@ export const S = {
       width: 100%;
     }
 
-    @media (max-width: var(--breakpoint-mobile)) {
+    @media (max-width: ${BREAKPOINTS.mobile}) {
       height: auto;
       margin-top: 2rem;
 

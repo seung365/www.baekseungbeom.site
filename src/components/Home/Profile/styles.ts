@@ -1,3 +1,4 @@
+import { BREAKPOINTS } from "@/styles/theme";
 import styled from "@emotion/styled";
 
 export const S = {
@@ -10,7 +11,7 @@ export const S = {
     align-items: center;
     gap: 2rem;
     max-width: 1280px;
-    @media (max-width: var(--breakpoint-mobile)) {
+    @media (max-width: ${BREAKPOINTS.mobile}) {
       flex-direction: column;
     }
   `,

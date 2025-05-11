@@ -1,3 +1,4 @@
+import { BREAKPOINTS } from "@/styles/theme";
 import styled from "@emotion/styled";
 
 interface TimelineProjectProps {
@@ -222,11 +223,11 @@ export const S = {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-bottom: 4rem;
-    @media (max-width: 1024px) {
+    @media (max-width: ${BREAKPOINTS.tablet}) {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: ${BREAKPOINTS.mobile}) {
       grid-template-columns: 1fr;
     }
   `,

@@ -54,4 +54,9 @@ export const darkTheme = {
   errorBackground: "#3e1a1a",
 };
 
+export const BREAKPOINTS = {
+  mobile: "768px",
+  tablet: "1024px",
+};
+
 export type Theme = typeof lightTheme;

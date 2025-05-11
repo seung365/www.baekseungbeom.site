@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import styled from "@emotion/styled";
+import { BREAKPOINTS } from "@/styles/theme";
 
 type UploadedImage = {
   id: string;
@@ -228,7 +229,7 @@ const ContentGrid = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 30px;
 
-  @media (max-width: 900px) {
+  @media (max-width: ${BREAKPOINTS.tablet}) {
     grid-template-columns: 1fr;
   }
 `;
