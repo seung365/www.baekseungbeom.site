@@ -19,12 +19,7 @@
   --color-success-background: #e6f7e6;
   --color-error-background: #ffecec;
 
-  /* 트랜지션 */
   --transition-default: all 0.3s ease;
-
-  /* 브레이크포인트 */
-  --breakpoint-mobile: 768px;
-  --breakpoint-tablet: 1024px;
 }
 
 [data-theme="dark"] {
@@ -52,6 +47,42 @@
   box-sizing: border-box;
   word-break: keep-all;
   word-wrap: break-word;
+}
+
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body.show-scrollbar {
+  scrollbar-width: thin;
+  -ms-overflow-style: auto;
+}
+
+body.show-scrollbar::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+  height: 8px;
+}
+
+body.show-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body.show-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.5);
+  border-radius: 4px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+body.show-scrollbar::-webkit-scrollbar-thumb:hover {
+  opacity: 1;
+  background: rgba(128, 128, 128, 0.7);
 }
 
 html,
@@ -112,22 +143,4 @@ button {
   background: none;
   font-family: inherit;
   cursor: pointer;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(127, 127, 127, 0.2);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(127, 127, 127, 0.3);
 }
