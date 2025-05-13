@@ -1,15 +1,10 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import styled from "@emotion/styled";
 import { BREAKPOINTS } from "@/styles/theme";
-
-type UploadedImage = {
-  id: string;
-  url: string;
-  name: string;
-  createdAt: string;
-};
+import { useImageList } from "@/hooks/useImageList";
+import { logout } from "./login/action";
 
 const AdminDashboard = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -19,37 +14,20 @@ const AdminDashboard = () => {
   const [isImageName, setIsImageName] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const response = await fetch("/api/images");
-        if (response.ok) {
-          const data = await response.json();
-          setImages(data.images);
-        }
-      } catch (error) {
-        console.error("Failed to fetch images:", error);
-      }
-    };
+  const { images, isLoading, error, refreshImages, addImage, removeImage } = useImageList();
 
-    fetchImages();
-  }, []);
-
-  // 파일 선택 핸들러
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
 
     if (file) {
       setSelectedImage(file);
 
-      // 미리보기 URL 생성
       const fileUrl = URL.createObjectURL(file);
       setPreviewUrl(fileUrl);
       setUploadStatus(null);
     }
   };
 
-  // 파일 업로드 핸들러
   const handleUpload = async () => {
     if (!selectedImage) {
       setUploadStatus("업로드할 이미지를 선택해주세요.");
@@ -59,12 +37,10 @@ const AdminDashboard = () => {
     try {
       setIsUploading(true);
 
-      // FormData 생성
       const formData = new FormData();
       formData.append("file", selectedImage);
       formData.append("name", isImageName);
 
-      // 서버에 업로드 요청
       const response = await fetch("/api/images", {
         method: "POST",
         body: formData,
@@ -76,12 +52,8 @@ const AdminDashboard = () => {
 
       const data = await response.json();
       setUploadStatus("이미지가 성공적으로 업로드되었습니다.");
+      addImage(data.image);
 
-      // 이미지 목록 업데이트
-      const updatedImages = [data.image, ...images];
-      setImages(updatedImages);
-
-      // 입력 필드 초기화
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }
@@ -95,7 +67,6 @@ const AdminDashboard = () => {
     }
   };
 
-  // 선택 취소 핸들러
   const handleClear = () => {
     setSelectedImage(null);
     setPreviewUrl(null);
@@ -134,11 +105,11 @@ const AdminDashboard = () => {
       <DashboardContainer>
         <Header>
           <h1>관리자 대시보드</h1>
-          <LogoutButton>로그아웃</LogoutButton>
+          <LogoutButton onClick={logout}>로그아웃</LogoutButton>
         </Header>
 
         <ContentGrid>
-          <UploadSection>
+          <UploadSection onSubmit={handleSubmit}>
             <SectionTitle>이미지 업로드</SectionTitle>
 
             <FileInput type="file" ref={fileInputRef} onChange={handleFileChange} accept="image/*" />
@@ -165,11 +136,15 @@ const AdminDashboard = () => {
               required
             />
             <ButtonGroup>
-              <PrimaryButton onClick={handleUpload} disabled={!selectedImage || isUploading}>
+              <PrimaryButton type="submit" disabled={isUploading}>
                 {isUploading ? "업로드 중..." : "업로드"}
               </PrimaryButton>
 
-              {selectedImage && <SecondaryButton onClick={handleClear}>취소</SecondaryButton>}
+              {selectedImage && (
+                <SecondaryButton type="button" onClick={handleClear}>
+                  취소
+                </SecondaryButton>
+              )}
             </ButtonGroup>
 
             {uploadStatus && <StatusMessage success={uploadStatus.includes("성공")}>{uploadStatus}</StatusMessage>}
@@ -178,14 +153,29 @@ const AdminDashboard = () => {
           <ImagesSection>
             <SectionTitle>업로드된 이미지</SectionTitle>
 
-            {images.length === 0 ? (
+            {isLoading ? (
+              <LoadingState>이미지를 불러오는 중...</LoadingState>
+            ) : error ? (
+              <ErrorState>
+                {error}
+                <RetryButton onClick={refreshImages}>다시 시도</RetryButton>
+              </ErrorState>
+            ) : images.length === 0 ? (
               <EmptyState>업로드된 이미지가 없습니다.</EmptyState>
             ) : (
               <ImageGrid>
                 {images.map((image) => (
                   <ImageCard key={image.id}>
                     <ImageThumbnail>
-                      <img src={image.url} alt={image.name} />
+                      <img
+                        src={image.url}
+                        alt={image.name}
+                        data-loaded="false"
+                        onLoad={(e) => (e.currentTarget.dataset.loaded = "true")}
+                      />
+                      <DeleteButton onClick={() => handleDelete(image.id)}>
+                        <DeleteIcon />
+                      </DeleteButton>
                     </ImageThumbnail>
                     <ImageDetails>
                       <p title={image.name}>{truncateText(image.name, 20)}</p>
@@ -275,7 +265,7 @@ const SectionTitle = styled.h2`
   border-bottom: 1px solid var(--color-border);
 `;
 
-const UploadSection = styled.section`
+const UploadSection = styled.form`
   background: var(--color-card-background);
   border-radius: 8px;
   padding: 24px;
@@ -397,6 +387,34 @@ const ImagesSection = styled.section`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 `;
 
+const LoadingState = styled.div`
+  padding: 40px 0;
+  text-align: center;
+  color: var(--color-text-secondary);
+`;
+
+const ErrorState = styled.div`
+  padding: 40px 0;
+  text-align: center;
+  color: var(--color-error);
+`;
+
+const RetryButton = styled.button`
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin: 10px auto 0;
+
+  &:hover {
+    opacity: 0.9;
+  }
+`;
+
 const EmptyState = styled.div`
   padding: 40px 0;
   text-align: center;
@@ -423,11 +441,49 @@ const ImageCard = styled.div`
 const ImageThumbnail = styled.div`
   height: 120px;
   background-color: #f5f5f5;
+  position: relative;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    &[data-loaded="true"] {
+      opacity: 1;
+    }
+  }
+
+  &:hover button {
+    display: flex;
+  }
+`;
+
+const DeleteButton = styled.button`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 0, 0, 0.8);
+  }
+`;
+
+const DeleteIcon = styled.span`
+  &:before {
+    content: "×";
+    font-size: 18px;
   }
 `;
 
