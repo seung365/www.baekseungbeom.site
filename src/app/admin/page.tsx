@@ -16,7 +16,7 @@ const AdminDashboard = () => {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState<string | null>(null);
-  const [images, setImages] = useState<UploadedImage[]>([]);
+  const [isImageName, setIsImageName] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -62,6 +62,7 @@ const AdminDashboard = () => {
       // FormData 생성
       const formData = new FormData();
       formData.append("file", selectedImage);
+      formData.append("name", isImageName);
 
       // 서버에 업로드 요청
       const response = await fetch("/api/images", {
@@ -130,7 +131,15 @@ const AdminDashboard = () => {
                 </PreviewInfo>
               </PreviewContainer>
             )}
-
+            <CustomInput
+              placeholder="이미지 이름을 입력하세요"
+              type="text"
+              onChange={(event) => {
+                setIsImageName(event.target.value);
+              }}
+              value={isImageName}
+              required
+            />
             <ButtonGroup>
               <PrimaryButton onClick={handleUpload} disabled={!selectedImage || isUploading}>
                 {isUploading ? "업로드 중..." : "업로드"}
@@ -290,6 +299,21 @@ const PreviewInfo = styled.div`
 
   p {
     margin: 5px 0;
+  }
+`;
+
+const CustomInput = styled.input`
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+
+  &:focus {
+    border-color: #0070f3;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.2);
   }
 `;
 
