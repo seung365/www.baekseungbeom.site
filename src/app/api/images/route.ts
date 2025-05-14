@@ -23,6 +23,7 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const file = formData.get("file") as File | null;
+    const name = formData.get("name") as string;
 
     if (!file) {
       return NextResponse.json({ error: "파일이 제공되지 않았습니다." }, { status: 400 });
@@ -51,7 +52,7 @@ export async function POST(request: NextRequest) {
 
     const image = await prisma.image.create({
       data: {
-        name: file.name,
+        name: name,
         url: `/uploads/${fileName}`,
         size: file.size,
         type: fileType,
