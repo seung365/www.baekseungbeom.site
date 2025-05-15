@@ -58,12 +58,13 @@ export const S = {
   `,
 
   Section: styled.section`
-    min-height: 100vh;
+    min-height: calc(100vh - 60px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 2rem;
+    padding: 0 2rem;
+    padding-bottom: 1rem;
     position: relative;
     overflow: hidden;
     background: var(--color-background);
