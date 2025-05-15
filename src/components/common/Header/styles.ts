@@ -3,7 +3,6 @@ import Link from "next/link";
 
 export const S = {
   Wrapper: styled.header`
-    position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
