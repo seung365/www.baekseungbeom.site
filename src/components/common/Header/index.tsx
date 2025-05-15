@@ -11,6 +11,9 @@ const navList = [
 const Header = () => {
   return (
     <S.Wrapper>
+      <S.Logo>
+        <a href="/">Hi,there</a>
+      </S.Logo>
       <S.ContentWrapper>
         <S.NavList>
           {navList.map((item) => (

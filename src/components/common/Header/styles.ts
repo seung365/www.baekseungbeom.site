@@ -17,6 +17,18 @@ export const S = {
     padding: 0.8rem 1rem;
   `,
 
+  Logo: styled.div`
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  `,
+
   NavList: styled.ul`
     display: flex;
     gap: 20px;
