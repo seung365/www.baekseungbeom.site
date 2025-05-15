@@ -26,11 +26,12 @@ const gallery = () => {
 export default gallery;
 
 const Wrapper = styled.div`
-  height: 100vh;
+  min-height: calc(100vh - 80px);
   background: var(--color-background);
   color: var(--color-text);
   display: flex;
-  padding: 60px 30px;
+  padding: 1rem 2rem;
+  padding-bottom: 80px;
   flex-direction: column;
 `;
 
