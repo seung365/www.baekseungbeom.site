@@ -38,6 +38,7 @@ const MainLayout = styled.div`
   color: var(--color-text);
   min-height: 100vh;
   padding: 2rem;
+  padding-bottom: 80px;
   position: relative;
   overflow: visible;
 `;
