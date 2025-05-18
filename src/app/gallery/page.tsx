@@ -36,7 +36,7 @@ const Gallery = () => {
 export default Gallery;
 
 const Wrapper = styled.div`
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 60px);
   background: var(--color-background);
   color: var(--color-text);
   display: flex;
