@@ -3,7 +3,7 @@ import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import { S } from "./styles";
 
 const Experience = () => {
-  const { sectionRef, isVisible } = useIntersectionObserver();
+  const { sectionRef, isVisible } = useIntersectionObserver({ threshold: 0.01 });
 
   return (
     <S.Section ref={sectionRef} $isVisible={isVisible}>
