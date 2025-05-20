@@ -13,6 +13,7 @@ export const useImageList = () => {
   const [images, setImages] = useState<UploadedImage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [imagesCount, setImagesCount] = useState<number>(0);
 
   const fetchImages = async () => {
     try {
@@ -35,8 +36,23 @@ export const useImageList = () => {
     }
   };
 
+  const fetchImageCount = async () => {
+    try {
+      const response = await fetch("/api/images/count");
+      if (!response.ok) {
+        throw new Error("이미지 개수를 가져오는데 실패했습니다.");
+      }
+      const data = await response.json();
+      setImagesCount(data.count);
+    } catch (error) {
+      console.error("Failed to fetch image count:", error);
+      return 0;
+    }
+  };
+
   useEffect(() => {
     fetchImages();
+    fetchImageCount();
   }, []);
 
   const addImage = (newImage: UploadedImage) => {
@@ -49,6 +65,7 @@ export const useImageList = () => {
 
   return {
     images,
+    imagesCount,
     isLoading,
     error,
     refreshImages: fetchImages,
