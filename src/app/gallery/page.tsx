@@ -19,7 +19,9 @@ const Gallery = () => {
               .map((_, index) => (
                 <ImageCard key={`skeleton-${index}`}>
                   <Skeleton height={300} style={{ borderRadius: "8px" }} />
-                  <Skeleton width={100} height={20} style={{ marginTop: "8px", borderRadius: "4px" }} />
+                  <div style={{ display: "flex", justifyContent: "center", width: "100%", marginTop: "8px" }}>
+                    <Skeleton width={100} height={20} style={{ borderRadius: "4px" }} />
+                  </div>
                 </ImageCard>
               ))
           : images.map((image) => (
