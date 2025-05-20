@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const Gallery = () => {
-  const { images, error, isLoading } = useImageList();
+  const { images, imagesCount, error, isLoading } = useImageList();
 
   return (
     <Wrapper>
@@ -14,7 +14,7 @@ const Gallery = () => {
       {error && <p>{error}</p>}
       <ImageGrid>
         {isLoading
-          ? Array(6)
+          ? Array(imagesCount)
               .fill(0)
               .map((_, index) => (
                 <ImageCard key={`skeleton-${index}`}>
