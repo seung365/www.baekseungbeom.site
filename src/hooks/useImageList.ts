@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export type UploadedImage = {
   id: string;
@@ -51,8 +51,8 @@ export const useImageList = () => {
   };
 
   useEffect(() => {
-    fetchImages();
     fetchImageCount();
+    fetchImages();
   }, []);
 
   const addImage = (newImage: UploadedImage) => {
