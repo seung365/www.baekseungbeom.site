@@ -30,3 +30,13 @@ model User {
   password String
   role     String  @default("user")
 }
+
+model Comment {
+  id        String   @id @default(cuid())
+  name      String
+  message   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("comments")
+}
