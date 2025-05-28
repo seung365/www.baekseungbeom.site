@@ -6,6 +6,7 @@ import { S } from "./styles";
 const navList = [
   { name: "About", path: "/" },
   { name: "Gallery", path: "/gallery" },
+  { name: "Guestbook", path: "/guestbook" },
 ];
 
 const Header = () => {
