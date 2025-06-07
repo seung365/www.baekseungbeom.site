@@ -7,6 +7,7 @@ import { S } from "./styles";
 const navList = [
   { name: "About", path: "/" },
   { name: "Gallery", path: "/gallery" },
+  { name: "Blog", path: "/blog" },
   { name: "Guestbook", path: "/guestbook" },
 ];
 
