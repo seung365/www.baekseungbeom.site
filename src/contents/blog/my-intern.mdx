@@ -1,0 +1,98 @@
+---
+title: "[인턴] 여기 이상한거 같아요"
+description: "오늘은 트러블 슈팅 얘기를 해볼 것이다.
+오늘도 어김없이 콘텐츠 개발을 해나가던 중 팀장님이 내 콘텐츠를 검수해주시다가 문제를 발견해주시고 말씀해주셨다."
+date: "2025-03-28"
+tags: ["인턴", "트러블슈팅", "프론트엔드"]
+author: "Baek SeungBeom"
+---
+
+오늘은 트러블 슈팅 얘기를 해볼 것이다.
+오늘도 어김없이 콘텐츠 개발을 해나가던 중 팀장님이 내 콘텐츠를 검수해주시다가 문제를 발견해주시고 말씀해주셨다.
+![](https://velog.velcdn.com/images/seung365/post/b4ac6f59-f30e-4fd8-a943-f5d84a566b08/image.png)
+![](https://velog.velcdn.com/images/seung365/post/5b0d1498-166c-4c31-8632-9ffa10a3b53f/image.png)
+
+만든 콘텐츠가 동전 던진 횟수를 체크해야 하는데 이때 1000번을 던졌다고 하였을 때 앞면과 뒷면이 나온 횟수의 합이 1001인 것이다!
+그런데 이 현상이 자주 일어나지는 않고 가끔 일어난다고 하셨다.
+
+### setInterval 너인가...?
+
+그래서 먼저 setInterval을 의심해 보았다. setInterval이 내가 알기론 완전 정확하지는 않고 오차가 있다고 알고 있었다. 그러면서 setTimeout을 통해 setInterval을 알아 보던 중 오차가 생각보다 크지 않다는 것이다. 1주일 정도 돌렸을때 1초...그리고 무엇보다 내가 만든 콘텐츠는 시간의 정확도보다는 횟수만 딱 맞게 떨어지면 되는 것 이었다.
+
+그래서 이녀석은 문제가 아니라고 판단했다.
+
+### 그럼 뭐가 문제인가...?
+
+그렇게 1000번을 던지고 5000번을 던지고.. 바로 결과가 안나오니 그사이에 화장실도 갔다오고.. 그런데도 결과가 달라질 리가 없었다. 그러던 중 문제가 된 부분을 자세히 보았다..
+막대 위에 적힌 글씨가 뭔가 겹쳐 보인다고 느껴졌다. 보내주신 사진 상에서는 그렇게 적혀있었다.
+![](https://velog.velcdn.com/images/seung365/post/5d8fde99-5e61-4696-ace0-fd76e5fec161/image.png)
+
+다음과 같이 여쭈어보았다. 일단 8로 보인다고 답변이 오셨는데.. 흠 좀 애매하다.
+
+### 뭔가 숫자가 겹쳐 보인다..!
+
+보내주신 에러 화면 이미지를 다운로드 후 확대 결과.. 8과 9가 겹쳐보인다는 것을 알게 되었다. 그래서 문제는 이제 결과가 두번 나왔다고 판단했다. 어떻게 두번이 나올 수 있을까. 바로 input에서 받는 이 확인 버튼을 여러번 누르면 해당 현상이 생기는 것이였다. 해당 문제를 구현 할 때 원래는 내가 만들 콘텐츠가 아니였고 동료 개발자분이 만드실 콘텐츠였다. 하지만 마감 기한이 다가왔고 그 안에 다해야 해 마지막 날 어쩌다보니 내가 맡게 된 거였다. 그러다 보니 테스트 하는 과정에서 확인 버튼을 여러번 눌러보는 과정을 놓친것이였다.
+![](https://velog.velcdn.com/images/seung365/post/dafb3b4e-b4a1-4ae7-8d30-84537c022e47/image.png)
+
+### 확인 버튼 여러번 누르면 어떻게 되나요
+
+![](https://velog.velcdn.com/images/seung365/post/6571c816-deeb-44b4-9afd-20645a12a9ee/image.png)
+요런 재미난 결과가 나온다
+![](https://velog.velcdn.com/images/seung365/post/70dd56b2-3db6-405c-b19f-077ffecfaf91/image.png)
+![](https://velog.velcdn.com/images/seung365/post/3965af5f-028a-4fa4-aaa3-8eb46f6db92e/image.png)
+팀장님이 보내주신 문제가 그대로 나온 것이었다!
+
+### 문제는 여러번의 input이 들어간...
+
+그럼 이 문제를 어떻게 해결할까
+먼저 간단하게 로직을 설명하자면 저 확인버튼을 누르게 되면 setInterval 즉 여러번 돌아가는 함수가 num을 매개변수로 받아 그만큼 돌리게 된다. 이때 이 랜덤 카운트 함수가 여러번 돌아간다는 것인데...그치만 분명 저 그래프가 나오는 화면을 처음으로 세팅 후 `handleRandomCount` 함수를 호출하기는 한다.
+
+```js
+inputButton.addEventListener("click", async () => {
+  if (inputNum.value !== "" && parseInt(inputNum.value) > 0) {
+    await initSetting();
+    handleRandomCount(parseInt(inputNum.value));
+  }
+});
+```
+
+그치만 여기서 하나 찝찝한 점이 있다. 문제는 화면을 처음 세팅하는 함수가 비동기라는 점이다. 그래서 새로 돌아갈 때 count 변수들을 초기화를 해줌에도 여러번 버튼을 눌렀을 때 `handleRandomCount`가 완전히 종료되기 전에 그 다음 handleRandomCount가 병렬적으로 실행 될 수 있다고 생각했다.
+
+### 그럼 어떻게 해야할까
+
+고민을 하던 중 Mutex 개념이 생각났다. 그래서 flag를 전역변수로 만들어 주고 이 flag가 false일때만 접근이 가능하게 하였다.
+
+```js
+let flag = false;
+let currentIntervalId = null;
+
+  const handleRandomCount = (num: number) => {
+	if(flag){
+    	return;
+    }
+    flag = true;
+    currentIntervalId = setInterval(() => {
+    ...
+    if(count >= maxCount){
+      clearInterval(currentIntervalId);
+      flag = false;
+     }
+    }, 60);
+   };
+```
+
+이렇게 하니 일차적으로 `handleRandomCount`가 여러번 동시에 돌아가는 문제는 해결이 되었다.
+
+### 하지만...
+
+이렇게 flag를 주게 되니 중복해서 발생하지는 않지만 `handleRandomCount`가 돌아가고 있을때 입력을 주어도 다시 실행되지 않고 계속해서 돌아간다는 것이다.
+사실 `resetButton`이 따로 있어서 실행되고 있을 때 입력을 받을 필요가 없긴 하다. 하지만 입력 button을 따로 막아두지 않으니 이는 마치 버그처럼 보이는것이다. 그래서 사용하는 유저가 버튼을 클릭 하지 못하도록 입력 button에 `handleRandomCount`을 들어감과 동시에 button에 `disabled`를 추가해 주었다.
+
+### 피드백을 마친 후
+
+다행히 더 이상의 문제는 없다고 판단했다. 그리고 피드백을 다 수정했다고 말씀드리니
+![](https://velog.velcdn.com/images/seung365/post/6f65a1fc-f7c5-40ef-8f4a-adeb87862f87/image.png)
+다음과 같이 답장이 왔다 ㅎ
+특히 이런 사용자 입력을 받고 그에 따른 실행 결과를 보여줘야 하는 경우 비동기 함수나 이런게 있을 경우 예상치 못하는 경우들이 많이 생기는것 같다.
+그래서 검수를 해주시고 피드백을 해주시는거 아닐까...!!
+그리고 버그를 수정할 때도 이 버그를 수정하는데 들이는 시간이 유의미한지도 한번 생각해보아야 한다. 시간은 한정되어 있고 계속해서 새로운 일들은 많으니..큰 포텐셜을 갖지 않고 있는 그런 버그들에 시간을 많이 쏟는것도 쉽지는 않은 일이다.
