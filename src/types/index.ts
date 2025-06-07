@@ -9,3 +9,22 @@ export type Image = {
   name: string;
   createdAt: string;
 };
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  tags: string[];
+  author: string;
+  readingTime: string;
+  content: string;
+}
+
+export interface BlogMetadata {
+  title: string;
+  description: string;
+  date: string;
+  tags: string[];
+  author: string;
+}
