@@ -1,12 +1,10 @@
-import createMDX from "@next/mdx";
+import { createVanillaExtractPlugin } from "@vanilla-extract/next-plugin";
+
+const withVanillaExtract = createVanillaExtractPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  pageExtensions: ["js", "jsx", "ts", "tsx"],
 };
 
-const withMDX = createMDX({
-  // MDX 플러그인 옵션
-});
-
-export default withMDX(nextConfig);
+export default withVanillaExtract(nextConfig);
