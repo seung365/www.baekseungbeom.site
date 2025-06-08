@@ -1,7 +1,7 @@
 "use client";
 
-import styled from "@emotion/styled";
 import { useRouter, useSearchParams } from "next/navigation";
+import * as styles from "./styles";
 
 interface TagFilterProps {
   tags: string[];
@@ -31,46 +31,24 @@ const TagFilter = ({ tags, selectedTag }: TagFilterProps) => {
   };
 
   return (
-    <FilterWrapper>
-      <TagList>
-        <TagItem onClick={handleAllClick} isSelected={!selectedTag}>
+    <div className={styles.filterWrapper}>
+      <div className={styles.tagList}>
+        <button className={styles.tagItem({ selected: !selectedTag })} onClick={handleAllClick} type="button">
           전체
-        </TagItem>
+        </button>
         {tags.map((tag) => (
-          <TagItem key={tag} onClick={() => handleTagClick(tag)} isSelected={selectedTag === tag}>
+          <button
+            key={tag}
+            className={styles.tagItem({ selected: selectedTag === tag })}
+            onClick={() => handleTagClick(tag)}
+            type="button"
+          >
             {tag}
-          </TagItem>
+          </button>
         ))}
-      </TagList>
-    </FilterWrapper>
+      </div>
+    </div>
   );
 };
 
 export default TagFilter;
-
-const FilterWrapper = styled.div`
-  margin-bottom: 2rem;
-`;
-
-const TagList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-`;
-
-const TagItem = styled.button<{ isSelected: boolean }>`
-  padding: 0.5rem 1rem;
-  border: 2px solid ${(props) => (props.isSelected ? "#667eea" : "var(--color-border)")};
-  background: ${(props) => (props.isSelected ? "#667eea" : "var(--color-background)")};
-  color: ${(props) => (props.isSelected ? "white" : "var(--color-text)")};
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-
-  &:hover {
-    border-color: #667eea;
-    background: ${(props) => (props.isSelected ? "#5a6fd8" : "rgba(102, 126, 234, 0.1)")};
-  }
-`;
