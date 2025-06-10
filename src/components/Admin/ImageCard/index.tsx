@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
 import { Image } from "@/types/index";
-import { S } from "./styles";
+import * as styles from "./styles.css";
 
 interface ImageProps extends Image {
   onDelete: (id: string) => void;
@@ -23,18 +22,23 @@ const formatDate = (dateString: string) => {
 
 const ImageCard = ({ id, url, name, createdAt, onDelete }: ImageProps) => {
   return (
-    <S.Card>
-      <S.Thumbnail>
+    <div className={styles.card}>
+      <div className={styles.thumbnail}>
         <img src={url} alt={name} data-loaded="false" onLoad={(e) => (e.currentTarget.dataset.loaded = "true")} />
-        <S.DeleteBtn onClick={() => onDelete(id)}>
-          <S.DeleteIcon />
-        </S.DeleteBtn>
-      </S.Thumbnail>
-      <S.Details>
+        <button
+          className={styles.deleteBtn}
+          onClick={() => onDelete(id)}
+          type="button"
+          aria-label={`${name} 이미지 삭제`}
+        >
+          <span className={styles.deleteIcon} />
+        </button>
+      </div>
+      <div className={styles.details}>
         <p title={name}>{truncateText(name, 20)}</p>
         <small>{formatDate(createdAt)}</small>
-      </S.Details>
-    </S.Card>
+      </div>
+    </div>
   );
 };
 

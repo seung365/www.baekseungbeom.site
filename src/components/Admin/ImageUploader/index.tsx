@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useRef } from "react";
 import { Image } from "@/types/index";
-import { S } from "./styles";
+import React, { useRef, useState } from "react";
+import * as styles from "./styles.css";
 
 interface ImageUploaderProps {
   onUploadSuccess: (image: Image) => void;
@@ -84,24 +84,26 @@ const ImageUploader = ({ onUploadSuccess }: ImageUploaderProps) => {
   };
 
   return (
-    <S.UploaderForm onSubmit={handleSubmit}>
-      <S.SectionTitle>이미지 업로드</S.SectionTitle>
+    <form className={styles.uploaderForm} onSubmit={handleSubmit}>
+      <h2 className={styles.sectionTitle}>이미지 업로드</h2>
 
-      <S.FileInput type="file" ref={fileInputRef} onChange={handleFileChange} accept="image/*" />
+      <input type="file" ref={fileInputRef} onChange={handleFileChange} accept="image/*" className={styles.fileInput} />
 
       {previewUrl && (
-        <S.PreviewContainer>
-          <S.PreviewTitle>미리보기</S.PreviewTitle>
-          <S.ImagePreview>
+        <div className={styles.previewContainer}>
+          <h3 className={styles.previewTitle}>미리보기</h3>
+          <div className={styles.imagePreview}>
             <img src={previewUrl} alt="Preview" />
-          </S.ImagePreview>
-          <S.PreviewInfo>
+          </div>
+          <div className={styles.previewInfo}>
             <p>파일명: {selectedImage?.name}</p>
             <p>크기: {Math.round((selectedImage?.size || 0) / 1024)} KB</p>
-          </S.PreviewInfo>
-        </S.PreviewContainer>
+          </div>
+        </div>
       )}
-      <S.CustomInput
+
+      <input
+        className={styles.customInput}
         placeholder="이미지 이름을 입력하세요"
         type="text"
         onChange={(event) => {
@@ -110,20 +112,29 @@ const ImageUploader = ({ onUploadSuccess }: ImageUploaderProps) => {
         value={isImageName}
         required
       />
-      <S.ButtonGroup>
-        <S.PrimaryButton type="submit" disabled={isUploading}>
+
+      <div className={styles.buttonGroup}>
+        <button type="submit" disabled={isUploading} className={styles.primaryButton}>
           {isUploading ? "업로드 중..." : "업로드"}
-        </S.PrimaryButton>
+        </button>
 
         {selectedImage && (
-          <S.SecondaryButton type="button" onClick={handleClear}>
+          <button type="button" onClick={handleClear} className={styles.secondaryButton}>
             취소
-          </S.SecondaryButton>
+          </button>
         )}
-      </S.ButtonGroup>
+      </div>
 
-      {uploadStatus && <S.StatusMessage success={uploadStatus.includes("성공")}>{uploadStatus}</S.StatusMessage>}
-    </S.UploaderForm>
+      {uploadStatus && (
+        <div
+          className={styles.statusMessage({
+            success: uploadStatus.includes("성공"),
+          })}
+        >
+          {uploadStatus}
+        </div>
+      )}
+    </form>
   );
 };
 

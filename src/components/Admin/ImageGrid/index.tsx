@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
 import ImageCard from "@/components/Admin/ImageCard";
 import { Image } from "@/types/index";
-import { S } from "./styles";
+import * as styles from "./styles.css";
+
 interface ImageGridProps {
   images: Image[];
   onDelete: (id: string) => void;
@@ -11,11 +11,11 @@ interface ImageGridProps {
 
 const ImageGrid = ({ images, onDelete }: ImageGridProps) => {
   if (images.length === 0) {
-    return <S.EmptyState>업로드된 이미지가 없습니다.</S.EmptyState>;
+    return <div className={styles.emptyState}>업로드된 이미지가 없습니다.</div>;
   }
 
   return (
-    <S.Grid>
+    <div className={styles.grid}>
       {images.map((image) => (
         <ImageCard
           key={image.id}
@@ -26,7 +26,7 @@ const ImageGrid = ({ images, onDelete }: ImageGridProps) => {
           onDelete={onDelete}
         />
       ))}
-    </S.Grid>
+    </div>
   );
 };
 
