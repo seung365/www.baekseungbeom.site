@@ -1,5 +1,5 @@
 import { getAllPosts, getPostBySlug } from "@/_utils/blogUtils";
-import BlogPostPageClient from "@/components/Blog/BlogPostPageClient";
+import BlogPostPageClient from "@/components/Blog/BlogPostPage";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {

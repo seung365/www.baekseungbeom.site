@@ -1,5 +1,5 @@
 import { getAllPosts, getAllTags } from "@/_utils/blogUtils";
-import BlogPageClient from "@/components/Blog/BlogPageClient";
+import BlogPageClient from "@/components/Blog/BlogPage";
 
 interface SearchParams {
   tag?: string;
