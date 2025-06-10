@@ -1,13 +1,14 @@
+// src/app/page.tsx
 "use client";
 
-import styled from "@emotion/styled";
-import { useEffect } from "react";
 import ScrollToTop from "@/components/common/ScrollToTop";
 import Experience from "@/components/Home/Experience";
 import Intro from "@/components/Home/Intro";
 import Profile from "@/components/Home/Profile";
 import Projects from "@/components/Home/Projects";
 import Skills from "@/components/Home/Skills";
+import MainLayout from "@/components/Layouts/MainLayout";
+import { useEffect } from "react";
 
 const Home = () => {
   useEffect(() => {
@@ -33,13 +34,4 @@ const Home = () => {
   );
 };
 
-const MainLayout = styled.div`
-  background: var(--color-background);
-  color: var(--color-text);
-  min-height: 100vh;
-  padding: 2rem;
-  padding-bottom: 80px;
-  position: relative;
-  overflow: visible;
-`;
 export default Home;
