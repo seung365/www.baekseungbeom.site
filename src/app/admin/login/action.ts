@@ -33,7 +33,6 @@ export async function login(formData: FormData) {
   return { error: "인증 실패. 자격 증명을 확인하세요." };
 }
 
-// 인증 상태 확인 액션
 export async function checkAuth() {
   const cookieStore = await cookies();
   const token = cookieStore.get("auth")?.value;
@@ -64,7 +63,6 @@ export async function checkAuth() {
   }
 }
 
-// 로그아웃 액션
 export async function logout() {
   const cookieStore = await cookies();
   cookieStore.set({

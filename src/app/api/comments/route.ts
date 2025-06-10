@@ -20,7 +20,6 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { name, message } = body;
 
-    // 입력 검증
     if (!name || !message) {
       return NextResponse.json({ error: "이름과 메시지는 필수입니다." }, { status: 400 });
     }

@@ -1,4 +1,3 @@
-// src/components/Blog/BlogPostNav/styles.css.ts
 import { themeVars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
@@ -95,7 +94,7 @@ export const navCardPlaceholder = style({
 
   "@media": {
     [`screen and (max-width: ${themeVars.breakpoint.mobile})`]: {
-      display: "none", // 모바일에서는 플레이스홀더 숨김
+      display: "none",
     },
   },
 });

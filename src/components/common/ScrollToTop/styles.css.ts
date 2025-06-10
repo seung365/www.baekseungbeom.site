@@ -22,7 +22,7 @@ export const upButton = recipe({
 
     ":hover": {
       transform: "scale(1.1)",
-      boxShadow: "0 0 10px rgba(102, 126, 234, 0.25)", // --color-primary-rgb 대체
+      boxShadow: "0 0 10px rgba(102, 126, 234, 0.25)",
     },
 
     ":focus": {

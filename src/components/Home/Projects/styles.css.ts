@@ -2,7 +2,6 @@ import { themeVars } from "@/styles/theme.css";
 import { keyframes, style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
-// Keyframes
 const fadeIn = keyframes({
   from: {
     opacity: 0,
@@ -47,7 +46,6 @@ const modalFadeOut = keyframes({
   },
 });
 
-// Main Section
 export const section = style({
   margin: "4rem auto",
   maxWidth: "1280px",
@@ -76,7 +74,6 @@ export const title = style({
   },
 });
 
-// Grid Container
 export const gridContainer = style({
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
@@ -91,7 +88,6 @@ export const gridContainer = style({
   },
 });
 
-// Project Items
 export const projectItem = recipe({
   base: {
     background: "var(--color-card-background)",
@@ -206,7 +202,6 @@ export const projectDescription = style({
   fontSize: "0.95rem",
 });
 
-// Modal Styles
 export const modalOverlay = style({
   position: "fixed",
   top: 0,
@@ -290,7 +285,6 @@ export const closeButton = style({
   },
 });
 
-// Project Detail Styles
 export const projectContent = style({
   padding: "2rem",
 

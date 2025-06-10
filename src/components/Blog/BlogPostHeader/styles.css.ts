@@ -1,4 +1,3 @@
-// src/components/Blog/BlogPostHeader/styles.css.ts (향상된 버전)
 import { themeVars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 

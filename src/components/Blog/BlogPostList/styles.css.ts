@@ -1,4 +1,3 @@
-// src/components/Blog/BlogPostList/styles.css.ts (향상된 버전)
 import { themeVars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
@@ -163,7 +162,6 @@ export const tag = style({
   },
 });
 
-// Empty State 스타일들 (동일)
 export const emptyState = style({
   textAlign: "center",
   padding: "4rem 2rem",
