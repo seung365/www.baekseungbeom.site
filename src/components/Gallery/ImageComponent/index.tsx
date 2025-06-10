@@ -1,16 +1,16 @@
 "use client";
 
 import { Image } from "@/types/index";
-import { S } from "./styles";
+import * as styles from "./styles.css";
 
 const ImageComponent = (image: Image) => {
   return (
-    <S.ImageCard>
-      <S.ImageWrapper>
-        <S.StyledImage src={image.url} alt={image.name} />
-      </S.ImageWrapper>
-      <S.ImageTitle>{image.name}</S.ImageTitle>
-    </S.ImageCard>
+    <div className={styles.imageCard}>
+      <div className={styles.imageWrapper}>
+        <img className={styles.styledImage} src={image.url} alt={image.name} />
+      </div>
+      <p className={styles.imageTitle}>{image.name}</p>
+    </div>
   );
 };
 
