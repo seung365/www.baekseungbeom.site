@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { S } from "./styles";
+import * as styles from "./styles.css";
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,7 +26,16 @@ const ScrollToTop = () => {
     });
   };
 
-  return isVisible ? <S.UpButton onClick={scrollToTop}>↑</S.UpButton> : null;
+  return (
+    <button
+      className={styles.upButton({ visible: isVisible })}
+      onClick={scrollToTop}
+      type="button"
+      aria-label="맨 위로 스크롤"
+    >
+      ↑
+    </button>
+  );
 };
 
 export default ScrollToTop;

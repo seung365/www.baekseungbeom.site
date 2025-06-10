@@ -1,11 +1,9 @@
-"use client";
-
-import "@/styles/global.css";
-import Header from "../Header";
-import Footer from "../Footer";
-import { Analytics } from "@vercel/analytics/next";
 import useShowScrollbar from "@/hooks/useShowScrollbar";
-import styled from "@emotion/styled";
+import "@/styles/global.css";
+import { Analytics } from "@vercel/analytics/next";
+import Footer from "../Footer";
+import Header from "../Header";
+import * as styles from "./styles.css";
 
 type ClientProviderProps = {
   children: React.ReactNode;
@@ -14,18 +12,13 @@ type ClientProviderProps = {
 const ClientProvider = ({ children }: ClientProviderProps) => {
   useShowScrollbar();
   return (
-    <Wrapper>
+    <div className={styles.wrapper}>
       <Header />
       {children}
       <Analytics />
       <Footer />
-    </Wrapper>
+    </div>
   );
 };
 
 export default ClientProvider;
-
-const Wrapper = styled.div`
-  position: relative;
-  height: 100%;
-`;

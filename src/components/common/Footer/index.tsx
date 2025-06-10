@@ -1,12 +1,10 @@
-"use client";
-
-import { S } from "./styles";
+import * as styles from "./styles.css";
 
 const Footer = () => {
   return (
-    <S.Footer>
+    <footer className={styles.footer}>
       <p>© 2025 Seung Beom Baek. All rights reserved.</p>
-    </S.Footer>
+    </footer>
   );
 };
 

@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import ThemeToggle from "../ThemeToggle";
-import { S } from "./styles";
+import * as styles from "./styles.css";
 
 const navList = [
   { name: "About", path: "/" },
@@ -24,47 +25,64 @@ const Header = () => {
 
   return (
     <>
-      <S.Wrapper>
-        <S.Logo>
+      <header className={styles.wrapper}>
+        <div className={styles.logo}>
           <a href="/" onClick={closeMenu}>
             Hi,there
           </a>
-        </S.Logo>
+        </div>
 
-        <S.DesktopNav>
-          <S.NavList>
+        <div className={styles.desktopNav}>
+          <ul className={styles.navList}>
             {navList.map((item) => (
-              <S.NavItem key={item.name}>
-                <S.StyledLink href={item.path}>{item.name}</S.StyledLink>
-              </S.NavItem>
+              <li key={item.name} className={styles.navItem}>
+                <Link href={item.path} className={styles.styledLink}>
+                  {item.name}
+                </Link>
+              </li>
             ))}
-          </S.NavList>
+          </ul>
           <ThemeToggle />
-        </S.DesktopNav>
+        </div>
 
-        <S.MobileNav>
+        <div className={styles.mobileNav}>
           <ThemeToggle />
-          <S.HamburgerButton onClick={toggleMenu} isOpen={isMenuOpen}>
-            <S.HamburgerLine isOpen={isMenuOpen} />
-            <S.HamburgerLine isOpen={isMenuOpen} />
-            <S.HamburgerLine isOpen={isMenuOpen} />
-          </S.HamburgerButton>
-        </S.MobileNav>
-      </S.Wrapper>
+          <button className={styles.hamburgerButton()} onClick={toggleMenu} type="button" aria-label="메뉴 토글">
+            <div
+              className={styles.hamburgerLine({
+                position: "first",
+                isOpen: isMenuOpen,
+              })}
+            />
+            <div
+              className={styles.hamburgerLine({
+                position: "second",
+                isOpen: isMenuOpen,
+              })}
+            />
+            <div
+              className={styles.hamburgerLine({
+                position: "third",
+                isOpen: isMenuOpen,
+              })}
+            />
+          </button>
+        </div>
+      </header>
 
-      <S.MobileMenu isOpen={isMenuOpen}>
-        <S.MobileNavList>
+      <nav className={styles.mobileMenu({ isOpen: isMenuOpen })}>
+        <ul className={styles.mobileNavList}>
           {navList.map((item) => (
-            <S.MobileNavItem key={item.name}>
-              <S.MobileStyledLink href={item.path} onClick={closeMenu}>
+            <li key={item.name} className={styles.mobileNavItem}>
+              <Link href={item.path} className={styles.mobileStyledLink} onClick={closeMenu}>
                 {item.name}
-              </S.MobileStyledLink>
-            </S.MobileNavItem>
+              </Link>
+            </li>
           ))}
-        </S.MobileNavList>
-      </S.MobileMenu>
+        </ul>
+      </nav>
 
-      {isMenuOpen && <S.Overlay onClick={closeMenu} />}
+      {isMenuOpen && <div className={styles.overlay} onClick={closeMenu} />}
     </>
   );
 };

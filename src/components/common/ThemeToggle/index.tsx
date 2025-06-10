@@ -1,6 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
-import { S } from "./styles";
+import { useEffect, useState } from "react";
+import * as styles from "./styles.css";
 
 const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(false);
@@ -20,14 +20,14 @@ const ThemeToggle = () => {
   };
 
   return (
-    <S.SwitchContainer>
-      <S.Switch>
-        <S.Input type="checkbox" checked={isDark} onChange={toggleTheme} />
-        <S.Slider className="slider">
-          <S.SliderIcon>{isDark ? "☀️" : "🌙"}</S.SliderIcon>
-        </S.Slider>
-      </S.Switch>
-    </S.SwitchContainer>
+    <div className={styles.switchContainer}>
+      <label className={styles.switch_}>
+        <input type="checkbox" checked={isDark} onChange={toggleTheme} className={styles.input} />
+        <span className={`${styles.slider} slider`}>
+          <span className={styles.sliderIcon({ icon: isDark ? "sun" : "moon" })}>{isDark ? "☀️" : "🌙"}</span>
+        </span>
+      </label>
+    </div>
   );
 };
 
