@@ -2,112 +2,72 @@
 
 import { useState } from "react";
 import { login } from "./action";
-import styled from "@emotion/styled";
+import * as styles from "./styles.css";
 
 export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleSubmit(formData: FormData) {
-    const result = await login(formData);
+    setIsLoading(true);
+    setError(null);
 
-    if (result?.error) {
-      setError(result.error);
+    try {
+      const result = await login(formData);
+
+      if (result?.error) {
+        setError(result.error);
+      }
+    } catch (err) {
+      setError("로그인 중 오류가 발생했습니다.");
+    } finally {
+      setIsLoading(false);
     }
   }
 
   return (
-    <Container>
-      <LoginBox>
-        <Title>관리자 로그인</Title>
+    <div className={styles.container}>
+      <div className={styles.loginBox}>
+        <h1 className={styles.title}>관리자 로그인</h1>
 
-        <Form action={handleSubmit}>
-          {error && <ErrorMessage>{error}</ErrorMessage>}
+        <form className={styles.form} action={handleSubmit}>
+          {error && <div className={styles.errorMessage}>{error}</div>}
 
-          <InputGroup>
-            <Label htmlFor="username">아이디</Label>
-            <Input type="text" id="username" name="username" required autoComplete="username" />
-          </InputGroup>
+          <div className={styles.inputGroup}>
+            <label htmlFor="username" className={styles.label}>
+              아이디
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              className={styles.input}
+              required
+              autoComplete="username"
+              disabled={isLoading}
+            />
+          </div>
 
-          <InputGroup>
-            <Label htmlFor="password">비밀번호</Label>
-            <Input type="password" id="password" name="password" required autoComplete="current-password" />
-          </InputGroup>
+          <div className={styles.inputGroup}>
+            <label htmlFor="password" className={styles.label}>
+              비밀번호
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              className={styles.input}
+              required
+              autoComplete="current-password"
+              disabled={isLoading}
+            />
+          </div>
 
-          <LoginButton type="submit">로그인</LoginButton>
-        </Form>
-      </LoginBox>
-    </Container>
+          <button type="submit" className={styles.loginButton} disabled={isLoading}>
+            {isLoading ? "로그인 중..." : "로그인"}
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f5f5f5;
-`;
-
-const LoginBox = styled.div`
-  width: 100%;
-  max-width: 400px;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-`;
-
-const Title = styled.h1`
-  margin-bottom: 1.5rem;
-  text-align: center;
-  color: #333;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
-const InputGroup = styled.div`
-  margin-bottom: 1rem;
-`;
-
-const Label = styled.label`
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-`;
-
-const Input = styled.input`
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-`;
-
-const LoginButton = styled.button`
-  width: 100%;
-  padding: 0.75rem;
-  margin-top: 1rem;
-  background-color: #0070f3;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #0051a8;
-  }
-`;
-
-const ErrorMessage = styled.div`
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  background-color: #fff0f0;
-  color: #e00;
-  border-radius: 4px;
-  border-left: 4px solid #e00;
-`;

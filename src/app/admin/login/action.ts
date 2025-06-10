@@ -1,9 +1,8 @@
-// app/admin/login/action.js
 "use server";
 
+import { sign, verify } from "jsonwebtoken";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { sign, verify } from "jsonwebtoken";
 
 export async function login(formData: FormData) {
   const username = formData.get("username");

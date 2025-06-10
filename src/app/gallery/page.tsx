@@ -1,81 +1,40 @@
 "use client";
 
-import styled from "@emotion/styled";
+import ImageComponent from "@/components/Gallery/ImageComponent";
 import { useImageList } from "@/hooks/useImageList";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import * as styles from "./styles.css";
 
 const Gallery = () => {
   const { images, imagesCount, error, isLoading } = useImageList();
 
   return (
-    <Wrapper>
-      <h1>Gallery</h1>
-      {error && <p>{error}</p>}
-      <ImageGrid>
+    <div className={styles.wrapper}>
+      <h1 className={styles.title}>Gallery</h1>
+
+      {error && <p className={styles.errorMessage}>{error}</p>}
+
+      <div className={styles.imageGrid}>
         {isLoading
           ? Array(imagesCount)
               .fill(0)
               .map((_, index) => (
-                <ImageCard key={`skeleton-${index}`}>
+                <div key={`skeleton-${index}`} className={styles.imageCard}>
                   <Skeleton height={300} style={{ borderRadius: "8px" }} />
-                  <div style={{ display: "flex", justifyContent: "center", width: "100%", marginTop: "8px" }}>
+                  <div className={styles.skeletonWrapper}>
                     <Skeleton width={100} height={20} style={{ borderRadius: "4px" }} />
                   </div>
-                </ImageCard>
+                </div>
               ))
           : images.map((image) => (
-              <ImageCard key={image.id}>
-                <img src={image.url} alt={image.name} />
-                <p>{image.name}</p>
-              </ImageCard>
+              <div key={image.id} className={styles.imageCard}>
+                <ImageComponent {...image} />
+              </div>
             ))}
-      </ImageGrid>
-    </Wrapper>
+      </div>
+    </div>
   );
 };
 
 export default Gallery;
-
-const Wrapper = styled.div`
-  min-height: calc(100vh - 60px);
-  background: var(--color-background);
-  color: var(--color-text);
-  display: flex;
-  padding: 1rem 2rem;
-  padding-bottom: 80px;
-  flex-direction: column;
-`;
-
-const ImageGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 16px;
-
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px rgba(0, 0, 0, 0.1);
-  }
-
-  p {
-    text-align: center;
-    margin-top: 8px;
-    font-size: 14px;
-    color: var(--color-text-secondary);
-  }
-`;
-
-const ImageCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-`;
