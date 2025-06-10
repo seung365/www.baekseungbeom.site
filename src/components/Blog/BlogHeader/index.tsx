@@ -1,5 +1,4 @@
-// src/components/Blog/BlogHeader/index.tsx
-import * as styles from "./styles";
+import * as styles from "./styles.css";
 
 const BlogHeader = () => {
   return (

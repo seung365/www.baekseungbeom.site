@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import * as styles from "./styles";
+import * as styles from "./styles.css";
 
 interface TagFilterProps {
   tags: string[];
