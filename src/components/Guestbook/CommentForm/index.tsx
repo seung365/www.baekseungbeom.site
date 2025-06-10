@@ -1,4 +1,4 @@
-import { S } from "./styles";
+import * as styles from "./styles.css";
 
 interface CommentFormProps {
   name: string;
@@ -12,17 +12,18 @@ interface CommentFormProps {
 
 const CommentForm = ({ name, setName, message, setMessage, isSubmitting, submitError, onSubmit }: CommentFormProps) => {
   return (
-    <S.FormWrapper onSubmit={onSubmit}>
-      <S.FormHeader>
-        <S.FormIcon>💬</S.FormIcon>
-        <S.FormTitle>메시지 남기기</S.FormTitle>
-      </S.FormHeader>
+    <form className={styles.formWrapper} onSubmit={onSubmit}>
+      <div className={styles.formHeader}>
+        <span className={styles.formIcon}>💬</span>
+        <h2 className={styles.formTitle}>메시지 남기기</h2>
+      </div>
 
-      {submitError && <S.ErrorMessage>{submitError}</S.ErrorMessage>}
+      {submitError && <div className={styles.errorMessage}>{submitError}</div>}
 
-      <S.FormGrid>
-        <S.InputWrapper>
-          <S.Input
+      <div className={styles.formGrid}>
+        <div className={styles.inputWrapper}>
+          <input
+            className={styles.input}
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -30,10 +31,11 @@ const CommentForm = ({ name, setName, message, setMessage, isSubmitting, submitE
             maxLength={20}
             required
           />
-        </S.InputWrapper>
+        </div>
 
-        <S.TextareaWrapper>
-          <S.Textarea
+        <div className={styles.textareaWrapper}>
+          <textarea
+            className={styles.textarea}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="따뜻한 메시지를 남겨주세요..."
@@ -41,14 +43,14 @@ const CommentForm = ({ name, setName, message, setMessage, isSubmitting, submitE
             maxLength={500}
             required
           />
-          <S.CharCount isLimit={message.length > 450}>{message.length}/500</S.CharCount>
-        </S.TextareaWrapper>
-      </S.FormGrid>
+          <div className={styles.charCount({ isLimit: message.length > 450 })}>{message.length}/500</div>
+        </div>
+      </div>
 
-      <S.SubmitButton type="submit" disabled={isSubmitting}>
+      <button className={styles.submitButton} type="submit" disabled={isSubmitting}>
         {isSubmitting ? (
           <>
-            <S.Spinner />
+            <div className={styles.spinner} />
             작성 중...
           </>
         ) : (
@@ -57,8 +59,8 @@ const CommentForm = ({ name, setName, message, setMessage, isSubmitting, submitE
             보내기
           </>
         )}
-      </S.SubmitButton>
-    </S.FormWrapper>
+      </button>
+    </form>
   );
 };
 
