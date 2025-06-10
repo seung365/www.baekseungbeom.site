@@ -1,8 +1,9 @@
-// ProjectItems.tsx
-import { useState } from "react";
+"use client";
+
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
+import { useState } from "react";
 import Modal from "./Modal";
-import { S } from "./styles";
+import * as styles from "./styles.css";
 
 interface ProjectItemsProps {
   title: string;
@@ -43,13 +44,20 @@ const ProjectItems = ({ title, description, project, index }: ProjectItemsProps)
 
   return (
     <>
-      <S.ProjectItem ref={sectionRef} onClick={handleClick} isVisible={isVisible} $index={index}>
-        <S.ProjectTitle>
+      <div
+        ref={sectionRef}
+        onClick={handleClick}
+        className={styles.projectItem({
+          isVisible,
+          index: Math.min(index, 9) as 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9,
+        })}
+      >
+        <h3 className={styles.projectTitle}>
           {mainTitle}
           {subTitle && <div>{subTitle}</div>}
-        </S.ProjectTitle>
-        <S.ProjectDescription>{description}</S.ProjectDescription>
-      </S.ProjectItem>
+        </h3>
+        <p className={styles.projectDescription}>{description}</p>
+      </div>
 
       {isModalOpen && (
         <Modal isModalOpen={isModalOpen} handleClose={handleClose} isClosing={isClosing} project={project} />

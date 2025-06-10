@@ -1,51 +1,51 @@
 import experience from "@/constant/experience";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
-import { S } from "./styles";
+import * as styles from "./styles.css";
 
 const Experience = () => {
   const { sectionRef, isVisible } = useIntersectionObserver({ threshold: 0.01 });
 
   return (
-    <S.Section ref={sectionRef} $isVisible={isVisible}>
-      <S.ExperienceGrid>
+    <section ref={sectionRef} className={styles.section({ isVisible })}>
+      <div className={styles.experienceGrid}>
         {experience.map((card, index) => (
-          <S.CardContainer key={index} $index={index}>
-            <S.ExperienceCard>
-              <S.CardTitle>{card.title}</S.CardTitle>
+          <div key={index} className={styles.cardContainer({ index: index as 0 | 1 | 2 })}>
+            <div className={styles.experienceCard}>
+              <h3 className={styles.cardTitle}>{card.title}</h3>
               {card.items.map((item, itemIndex) => (
-                <S.ItemContainer key={itemIndex}>
-                  <S.ItemHeader>
-                    <S.ItemName>{item.name}</S.ItemName>
-                    <S.ItemPeriod>{item.period}</S.ItemPeriod>
-                  </S.ItemHeader>
-                  <S.ItemRole>{item.role}</S.ItemRole>
+                <div key={itemIndex} className={styles.itemContainer}>
+                  <div className={styles.itemHeader}>
+                    <h4 className={styles.itemName}>{item.name}</h4>
+                    <span className={styles.itemPeriod}>{item.period}</span>
+                  </div>
+                  <p className={styles.itemRole}>{item.role}</p>
                   {item.details && (
-                    <S.DetailsList>
+                    <ul className={styles.detailsList}>
                       {item.details.map((detail, detailIndex) => (
                         <li key={detailIndex}>{detail}</li>
                       ))}
-                    </S.DetailsList>
+                    </ul>
                   )}
-                  {item.status && <S.ItemStatus>{item.status}</S.ItemStatus>}
-                </S.ItemContainer>
+                  {item.status && <span className={styles.itemStatus}>{item.status}</span>}
+                </div>
               ))}
               {card.title === "Education" && (
                 <>
-                  <S.CardTitle>Work Experience</S.CardTitle>
-                  <S.ItemContainer>
-                    <S.ItemHeader>
-                      <S.ItemName>(주) 셈웨어 ICT 인턴십 프로그램</S.ItemName>
-                      <S.ItemPeriod>2025.03 ~ </S.ItemPeriod>
-                    </S.ItemHeader>
-                    <S.ItemRole>React, TypeScript, MATHCORE API, GitLab</S.ItemRole>
-                  </S.ItemContainer>
+                  <h3 className={styles.cardTitle}>Work Experience</h3>
+                  <div className={styles.itemContainer}>
+                    <div className={styles.itemHeader}>
+                      <h4 className={styles.itemName}>(주) 셈웨어 ICT 인턴십 프로그램</h4>
+                      <span className={styles.itemPeriod}>2025.03 ~ </span>
+                    </div>
+                    <p className={styles.itemRole}>React, TypeScript, MATHCORE API, GitLab</p>
+                  </div>
                 </>
               )}
-            </S.ExperienceCard>
-          </S.CardContainer>
+            </div>
+          </div>
         ))}
-      </S.ExperienceGrid>
-    </S.Section>
+      </div>
+    </section>
   );
 };
 

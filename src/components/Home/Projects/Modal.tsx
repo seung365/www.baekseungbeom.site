@@ -1,7 +1,9 @@
+"use client";
+
 import { useEffect } from "react";
 import ReactDOM from "react-dom";
 import ProjectDetail from "./ProjectDetail";
-import { S } from "./styles";
+import * as styles from "./styles.css";
 
 interface ModalProps {
   isModalOpen: boolean;
@@ -39,17 +41,19 @@ const Modal = ({ isModalOpen, handleClose, isClosing, project }: ModalProps) => 
   }, [isModalOpen, handleClose]);
 
   const modalContent = (
-    <S.ModalOverlay onClick={handleClose} className={isClosing ? "closing" : ""}>
-      <S.ModalContent
+    <div className={`${styles.modalOverlay} ${isClosing ? "closing" : ""}`} onClick={handleClose}>
+      <div
+        className={`${styles.modalContent} ${isClosing ? "closing" : ""}`}
         onClick={(e) => {
           e.stopPropagation();
         }}
-        className={isClosing ? "closing" : ""}
       >
-        <S.CloseButton onClick={handleClose}>&times;</S.CloseButton>
+        <button className={styles.closeButton} onClick={handleClose} type="button" aria-label="모달 닫기">
+          &times;
+        </button>
         <ProjectDetail project={project} index={0} />
-      </S.ModalContent>
-    </S.ModalOverlay>
+      </div>
+    </div>
   );
 
   return ReactDOM.createPortal(modalContent, document.getElementById("modal-root") || document.body);

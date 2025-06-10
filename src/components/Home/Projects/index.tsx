@@ -1,14 +1,17 @@
+"use client";
+
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import ProjectGrid from "./ProjectGrid";
-import { S } from "./styles";
+import * as styles from "./styles.css";
 
 const Projects = () => {
   const { sectionRef, isVisible: isTitleVisible } = useIntersectionObserver({ threshold: 0.1 });
 
   return (
-    <S.Section>
-      <S.Title
+    <section className={styles.section}>
+      <h2
         ref={sectionRef}
+        className={styles.title}
         style={{
           opacity: isTitleVisible ? 1 : 0,
           transform: `translateY(${isTitleVisible ? "0" : "20px"})`,
@@ -16,9 +19,9 @@ const Projects = () => {
         }}
       >
         Projects
-      </S.Title>
+      </h2>
       <ProjectGrid />
-    </S.Section>
+    </section>
   );
 };
 

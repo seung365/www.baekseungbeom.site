@@ -1,7 +1,9 @@
-import { useRef } from "react";
+"use client";
+
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import { useScroll } from "@/hooks/useScroll";
-import { S } from "./styles";
+import { useRef } from "react";
+import * as styles from "./styles.css";
 
 const Intro = () => {
   const { sectionRef, isVisible } = useIntersectionObserver();
@@ -11,31 +13,38 @@ const Intro = () => {
   const { handleScrollDown } = useScroll(sectionRef, contentRef, contactRef);
 
   return (
-    <S.Section ref={sectionRef}>
-      <S.ContentWrapper ref={contentRef}>
-        <S.NameContainer>
-          <S.FirstName>Baek</S.FirstName>
-          <S.LastName>SeungBeom</S.LastName>
-        </S.NameContainer>
-      </S.ContentWrapper>
-      <S.ContactWrapper ref={contactRef}>
-        <S.ContactItem delay={0.6}>
-          <S.Link href="https://velog.io/@seung365" target="_blank" rel="noopener noreferrer">
+    <section ref={sectionRef} className={styles.section}>
+      <div ref={contentRef} className={styles.contentWrapper}>
+        <div className={styles.nameContainer}>
+          <div className={styles.firstName}>Baek</div>
+          <div className={styles.lastName}>SeungBeom</div>
+        </div>
+      </div>
+
+      <div ref={contactRef} className={styles.contactWrapper}>
+        <div className={styles.contactItem({ delay: 0.6 })}>
+          <a href="https://velog.io/@seung365" target="_blank" rel="noopener noreferrer" className={styles.link}>
             Velog
-          </S.Link>
-        </S.ContactItem>
-        <S.ContactItem delay={0.8}>
-          <S.Link href="https://github.com/seung365" target="_blank" rel="noopener noreferrer">
+          </a>
+        </div>
+        <div className={styles.contactItem({ delay: 0.8 })}>
+          <a href="https://github.com/seung365" target="_blank" rel="noopener noreferrer" className={styles.link}>
             Github
-          </S.Link>
-        </S.ContactItem>
-        <S.ContactItem delay={1.0}>+82 10-5583-6009</S.ContactItem>
-        <S.ContactItem delay={1.2}>bdh3659@naver.com</S.ContactItem>
-      </S.ContactWrapper>
-      <S.ScrollDownButton onClick={handleScrollDown} $isVisible={isVisible}>
-        <S.ScrollArrow>↓</S.ScrollArrow>
-      </S.ScrollDownButton>
-    </S.Section>
+          </a>
+        </div>
+        <div className={styles.contactItem({ delay: 1.0 })}>+82 10-5583-6009</div>
+        <div className={styles.contactItem({ delay: 1.2 })}>bdh3659@naver.com</div>
+      </div>
+
+      <button
+        onClick={handleScrollDown}
+        className={styles.scrollDownButton({ isVisible })}
+        type="button"
+        aria-label="아래로 스크롤"
+      >
+        <span className={styles.scrollArrow}>↓</span>
+      </button>
+    </section>
   );
 };
 

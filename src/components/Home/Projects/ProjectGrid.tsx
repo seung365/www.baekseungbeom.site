@@ -1,10 +1,10 @@
 import projects from "@/constant/projectData";
 import ProjectItems from "./ProjectItems";
-import { S } from "./styles";
+import * as styles from "./styles.css";
 
 const ProjectGrid = () => {
   return (
-    <S.GridContainer>
+    <div className={styles.gridContainer}>
       {projects.map((project, index) => (
         <ProjectItems
           key={index}
@@ -16,7 +16,7 @@ const ProjectGrid = () => {
           description={project.description}
         />
       ))}
-    </S.GridContainer>
+    </div>
   );
 };
 

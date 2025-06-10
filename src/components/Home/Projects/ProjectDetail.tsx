@@ -1,6 +1,6 @@
-import { S } from "./styles";
+import * as styles from "./styles.css";
 
-interface ProjectDeatilProps {
+interface ProjectDetailProps {
   project: {
     title: string;
     period: string;
@@ -13,48 +13,48 @@ interface ProjectDeatilProps {
   index: number;
 }
 
-const ProjectDetail = ({ project }: ProjectDeatilProps) => {
+const ProjectDetail = ({ project }: ProjectDetailProps) => {
   return (
-    <S.ProjectContent>
-      <S.ProjectHeader>
+    <div className={styles.projectContent}>
+      <div className={styles.projectHeader}>
         <div>
-          <S.ProjectTitleDetail>{project.title}</S.ProjectTitleDetail>
-          <S.ProjectDate>{project.period}</S.ProjectDate>
+          <h1 className={styles.projectTitleDetail}>{project.title}</h1>
+          <p className={styles.projectDate}>{project.period}</p>
         </div>
         {project.githubUrl && (
-          <S.ProjectLinks>
+          <div className={styles.projectLinks}>
             <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
-          </S.ProjectLinks>
+          </div>
         )}
-      </S.ProjectHeader>
+      </div>
 
-      <S.InfoGrid>
-        <S.InfoItem>
-          <S.Label>인력 구성</S.Label>
+      <div className={styles.infoGrid}>
+        <div className={styles.infoItem}>
+          <span className={styles.label}>인력 구성</span>
           <p>{project.team}</p>
-        </S.InfoItem>
-        <S.InfoItem>
-          <S.Label>프로젝트 목적</S.Label>
+        </div>
+        <div className={styles.infoItem}>
+          <span className={styles.label}>프로젝트 목적</span>
           <p>{project.purpose}</p>
-        </S.InfoItem>
-      </S.InfoGrid>
+        </div>
+      </div>
 
-      <S.ContentSection>
-        <S.SectionTitle>주요 업무</S.SectionTitle>
-        <S.List>
+      <div className={styles.contentSection}>
+        <h2 className={styles.sectionTitle}>주요 업무</h2>
+        <ul className={styles.list}>
           {project.mainTasks.map((task, taskIndex) => (
             <li key={taskIndex}>{task}</li>
           ))}
-        </S.List>
-      </S.ContentSection>
+        </ul>
+      </div>
 
-      <S.ContentSection>
-        <S.SectionTitle>사용 기술</S.SectionTitle>
-        <S.TechStack>{project.tech}</S.TechStack>
-      </S.ContentSection>
-    </S.ProjectContent>
+      <div className={styles.techSection}>
+        <span className={styles.label}>기술 스택</span>
+        <p>{project.tech}</p>
+      </div>
+    </div>
   );
 };
 
