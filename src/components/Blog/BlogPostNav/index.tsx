@@ -1,7 +1,6 @@
-// src/components/Blog/BlogPostNav/index.tsx
 import { BlogPost } from "@/types/index";
 import Link from "next/link";
-import * as styles from "./styles";
+import * as styles from "./styles.css";
 
 interface BlogPostNavProps {
   prevPost: BlogPost | null;

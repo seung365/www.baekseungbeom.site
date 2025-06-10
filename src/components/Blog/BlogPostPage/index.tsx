@@ -2,7 +2,7 @@ import BlogPostContent from "@/components/Blog/BlogPostContent";
 import BlogPostHeader from "@/components/Blog/BlogPostHeader";
 import BlogPostNav from "@/components/Blog/BlogPostNav";
 import { BlogPost } from "@/types/index";
-import * as styles from "./styles";
+import * as styles from "./styles.css";
 
 interface BlogPostPageProps {
   post: BlogPost;

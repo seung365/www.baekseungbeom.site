@@ -1,5 +1,5 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
-import * as styles from "./styles";
+import * as styles from "./styles.css";
 
 interface BlogPostContentProps {
   content: string;

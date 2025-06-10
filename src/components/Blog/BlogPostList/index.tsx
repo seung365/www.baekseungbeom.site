@@ -1,8 +1,7 @@
-// src/components/Blog/BlogPostList/index.tsx
 import { formatDate } from "@/_utils/dateUtils";
 import { BlogPost } from "@/types/index";
 import Link from "next/link";
-import * as styles from "./styles";
+import * as styles from "./styles.css";
 
 interface BlogPostListProps {
   posts: BlogPost[];

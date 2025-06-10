@@ -2,7 +2,7 @@ import BlogHeader from "@/components/Blog/BlogHeader";
 import BlogPostList from "@/components/Blog/BlogPostList";
 import TagFilter from "@/components/Blog/TagFilter";
 import { BlogPost } from "@/types/index";
-import * as styles from "./styles";
+import * as styles from "./styles.css";
 
 interface BlogPageProps {
   posts: BlogPost[];
